@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -20,9 +22,32 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures { buildConfig = true }
+
+    //load the values from .properties file
+    val keystoreFile = project.rootProject.file("local.properties")
+    val properties = Properties()
+    properties.load(keystoreFile.inputStream())
+    //return empty key in case something goes wrong
+    val apiKey = properties.getProperty("API_KEY") ?: ""
+
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            buildConfigField(
+                type = "String",
+                name = "API_KEY",
+                value = "\"$apiKey\""
+            )
+        }
+
+        release {
+            isMinifyEnabled = true
+            buildConfigField(
+                type = "String",
+                name = "API_KEY",
+                value = "\"$apiKey\""
+            )
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -61,4 +86,12 @@ dependencies {
     // Hilt
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
 }
