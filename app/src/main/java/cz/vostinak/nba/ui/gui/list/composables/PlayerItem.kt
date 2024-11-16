@@ -35,13 +35,13 @@ fun PlayerItem(
         ) {
             Text(
                 modifier = Modifier,
-                text = "${data.lastName} ${data.firstName}",
+                text = "${data.lastName ?: ""} ${data.firstName ?: ""}",
                 style = MaterialTheme.typography.titleLarge,
             )
 
             Text(
                 modifier = Modifier,
-                text = data.country,
+                text = data.country ?: "",
                 style = MaterialTheme.typography.titleMedium,
             )
         }

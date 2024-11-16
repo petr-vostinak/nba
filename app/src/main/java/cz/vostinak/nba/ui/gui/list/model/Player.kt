@@ -10,30 +10,30 @@ data class Player(
     val id: Long,
     /** First name */
     @SerializedName("first_name")
-    val firstName: String,
+    val firstName: String?,
     /** Last name */
     @SerializedName("last_name")
-    val lastName: String,
+    val lastName: String?,
     /** Position */
-    val position: String,
+    val position: String?,
     /** Height */
-    val height: String,
+    val height: String?,
     /** Weight */
-    val weight: String,
+    val weight: String?,
     /** Jersey number */
     @SerializedName("jersey_number")
-    val jerseyNumber: String,
+    val jerseyNumber: String?,
     /** College */
-    val college: String,
+    val college: String?,
     /** Country */
-    val country: String,
+    val country: String?,
     /** Draft year */
     @SerializedName("draft_year")
-    val draftYear: Int,
+    val draftYear: Int?,
     /** Draft round */
     @SerializedName("draft_round")
-    val draftRound: Int,
+    val draftRound: Int?,
     /** Draft number */
     @SerializedName("draft_number")
-    val draftNumber: Int
+    val draftNumber: Int?
 )
