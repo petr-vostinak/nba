@@ -60,12 +60,14 @@ fun PlayersListScreen(
         ) {
             val lazyListState = rememberLazyListState()
 
+            // innit loading
             LaunchedEffect(lazyListState.canScrollForward) {
                 if (lazyListState.canScrollForward.not() && lazyListState.firstVisibleItemIndex > 1) {
                     onLoadNextPage?.invoke()
                 }
             }
 
+            // list of players
             LazyColumn(
                 modifier = Modifier.weight(1f),
                 state = lazyListState
@@ -94,6 +96,7 @@ fun PlayersListScreen(
                 }
             }
 
+            // next page loading
             AnimatedVisibility(state.players.isNotEmpty() && state.isLoading) {
                 LinearProgressIndicator(
                     modifier = Modifier
