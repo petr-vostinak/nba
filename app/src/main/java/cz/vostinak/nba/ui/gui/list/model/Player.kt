@@ -1,6 +1,7 @@
 package cz.vostinak.nba.ui.gui.list.model
 
 import com.google.gson.annotations.SerializedName
+import cz.vostinak.nba.ui.gui.team.model.Team
 
 /**
  * Player data class.
@@ -35,5 +36,7 @@ data class Player(
     val draftRound: Int?,
     /** Draft number */
     @SerializedName("draft_number")
-    val draftNumber: Int?
+    val draftNumber: Int?,
+    /** Team info */
+    val team: Team?
 )

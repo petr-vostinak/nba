@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.ui.gui.list.model.Player
+import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.nba.ui.theme.NBATheme
 
 /**
@@ -37,11 +38,12 @@ fun PlayerItem(
                 modifier = Modifier,
                 text = "${data.lastName ?: ""} ${data.firstName ?: ""}",
                 style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary
             )
 
             Text(
                 modifier = Modifier,
-                text = data.country ?: "",
+                text = data.team?.fullName ?: "",
                 style = MaterialTheme.typography.titleMedium,
             )
         }
@@ -67,6 +69,15 @@ private fun ShowPlayerItem() {
                 draftYear = 2009,
                 draftRound = 1,
                 draftNumber = 7,
+                team = Team(
+                    id = 10,
+                    abbreviation = "GSW",
+                    city = "Golden State",
+                    fullName = "Golden State Warriors",
+                    name = "Warriors",
+                    conference = "West",
+                    division = "Pacific"
+                )
             )
         )
     }
