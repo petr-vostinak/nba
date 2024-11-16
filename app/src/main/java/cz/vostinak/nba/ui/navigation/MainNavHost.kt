@@ -32,7 +32,10 @@ fun MainNavHost() {
             }
 
             PlayersListScreen(
-                state = state.value
+                state = state.value,
+                onLoadNextPage = {
+                    viewModel.loadMore()
+                }
             )
         }
     }
