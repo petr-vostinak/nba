@@ -16,12 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import cz.vostinak.nba.R
 import cz.vostinak.nba.ui.gui.list.model.Player
 import cz.vostinak.nba.ui.gui.team.model.Team
+import cz.vostinak.nba.ui.preview.Theme
+import cz.vostinak.nba.ui.preview.ThemePreviewProvider
 import cz.vostinak.nba.ui.theme.NBATheme
 
 /**
@@ -75,8 +78,10 @@ fun PlayerItem(
 
 @Preview
 @Composable
-private fun ShowPlayerItem() {
-    NBATheme {
+private fun ShowPlayerItem(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
         PlayerItem(
             modifier = Modifier,
             data = Player(

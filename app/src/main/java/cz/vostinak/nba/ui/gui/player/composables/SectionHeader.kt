@@ -9,7 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import cz.vostinak.nba.ui.preview.Theme
+import cz.vostinak.nba.ui.preview.ThemePreviewProvider
 import cz.vostinak.nba.ui.theme.NBATheme
 
 /**
@@ -31,8 +34,10 @@ fun SectionHeader(title: String) {
 
 @Preview
 @Composable
-private fun ShowSectionHeader() {
-    NBATheme {
+private fun ShowSectionHeader(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
         SectionHeader("Player Info")
     }
 }

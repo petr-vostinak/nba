@@ -24,12 +24,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.R
 import cz.vostinak.nba.ui.gui.player.composables.InfoCell
 import cz.vostinak.nba.ui.gui.player.composables.SectionHeader
 import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.nba.ui.gui.team.model.TeamDetailState
+import cz.vostinak.nba.ui.preview.Theme
+import cz.vostinak.nba.ui.preview.ThemePreviewProvider
 import cz.vostinak.nba.ui.theme.NBATheme
 
 /**
@@ -140,8 +143,10 @@ fun TeamDetailScreen(
 
 @Preview
 @Composable
-private fun ShowTeamDetailScreen() {
-    NBATheme {
+private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
         TeamDetailScreen(
             TeamDetailState(
                 team = Team(

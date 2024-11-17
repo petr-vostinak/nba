@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
@@ -35,6 +36,8 @@ import cz.vostinak.nba.ui.gui.player.composables.InfoCell
 import cz.vostinak.nba.ui.gui.player.composables.SectionHeader
 import cz.vostinak.nba.ui.gui.player.model.PlayerDetailState
 import cz.vostinak.nba.ui.gui.team.model.Team
+import cz.vostinak.nba.ui.preview.Theme
+import cz.vostinak.nba.ui.preview.ThemePreviewProvider
 import cz.vostinak.nba.ui.theme.NBATheme
 
 /**
@@ -231,8 +234,10 @@ fun PlayerDetailScreen(
 
 @Preview
 @Composable
-private fun ShowPlayerDetailScreen() {
-    NBATheme {
+private fun ShowPlayerDetailScreen(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
         PlayerDetailScreen(
             state = PlayerDetailState(
                 player = Player(
