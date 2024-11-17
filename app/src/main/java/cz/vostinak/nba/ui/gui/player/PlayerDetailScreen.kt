@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import cz.vostinak.nba.R
+import cz.vostinak.nba.ui.gui.commons.ErrorCard
 import cz.vostinak.nba.ui.gui.list.model.Player
 import cz.vostinak.nba.ui.gui.player.composables.PlayerDetailContent
 import cz.vostinak.nba.ui.gui.player.composables.PlayerDetailShimmer
@@ -98,6 +99,16 @@ fun PlayerDetailScreen(
             )
         }
 
+        // Show error
+        AnimatedVisibility(
+            visible = state.error != null && !state.isLoading,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            ErrorCard(
+                modifier = Modifier.padding(innerPadding)
+            )
+        }
 
     }
 }
@@ -151,6 +162,22 @@ private fun ShowPlayerDetailScreenLoading(@PreviewParameter(ThemePreviewProvider
                 player = null,
                 isLoading = true,
                 error = null
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ShowPlayerDetailScreenError(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
+        PlayerDetailScreen(
+            state = PlayerDetailState(
+                player = null,
+                isLoading = false,
+                error = Throwable()
             )
         )
     }

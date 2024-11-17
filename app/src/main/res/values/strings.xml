@@ -29,4 +29,9 @@
     <string name="content_description_player_image">Player image</string>
     <string name="content_description_more_info">More info</string>
     <string name="content_description_team_logo">%s  logo</string>
+
+    <!-- error card -->
+    <string name="error_card_image_desc">Error image</string>
+    <string name="error_card_title">Error</string>
+    <string name="error_card_subtitle">An error occurred. Please check your internet connection and try again.</string>
 </resources>

@@ -18,11 +18,20 @@ class TeamDetailRepository @Inject constructor(
      * @param teamId Team ID.
      */
     suspend fun getTeamDetail(teamId: Long) {
-        val response = nbaTeamRestApi.getTeam(teamId)
+        try {
+            val response = nbaTeamRestApi.getTeam(teamId)
 
-        teamDetailState.value = TeamDetailState(
-            isLoading = false,
-            team = response.data
-        )
+            teamDetailState.value = TeamDetailState(
+                isLoading = false,
+                team = response.data
+            )
+        } catch (e: Exception) {
+            teamDetailState.value = TeamDetailState(
+                team = null,
+                isLoading = false,
+                error = e
+            )
+        }
+
     }
 }

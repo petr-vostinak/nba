@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import cz.vostinak.nba.R
+import cz.vostinak.nba.ui.gui.commons.ErrorCard
 import cz.vostinak.nba.ui.gui.team.composables.TeamDetailContent
 import cz.vostinak.nba.ui.gui.team.composables.TeamDetailShimmer
 import cz.vostinak.nba.ui.gui.team.model.Team
@@ -71,6 +72,7 @@ fun TeamDetailScreen(
             )
         }
     ) { innerPadding ->
+        // Show loading shimmer
         AnimatedVisibility(
             visible = state.isLoading,
             enter = fadeIn(),
@@ -81,6 +83,7 @@ fun TeamDetailScreen(
             )
         }
 
+        // Show content
         AnimatedVisibility(
             visible = !state.isLoading && state.error == null,
             enter = fadeIn(),
@@ -89,6 +92,17 @@ fun TeamDetailScreen(
             TeamDetailContent(
                 modifier = Modifier.padding(innerPadding),
                 state = state
+            )
+        }
+
+        // Show error
+        AnimatedVisibility(
+            visible = state.error != null && !state.isLoading,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            ErrorCard(
+                modifier = Modifier.padding(innerPadding)
             )
         }
 
@@ -130,6 +144,22 @@ private fun ShowTeamDetailShimmer(@PreviewParameter(ThemePreviewProvider ::class
                 isLoading = true,
                 team = null,
                 error = null
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ShowTeamDetailError(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
+        TeamDetailScreen(
+            TeamDetailState(
+                isLoading = false,
+                team = null,
+                error = Throwable()
             )
         )
     }

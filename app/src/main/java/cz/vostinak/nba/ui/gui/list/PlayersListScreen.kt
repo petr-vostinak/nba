@@ -1,6 +1,8 @@
 package cz.vostinak.nba.ui.gui.list
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.R
+import cz.vostinak.nba.ui.gui.commons.ErrorCard
 import cz.vostinak.nba.ui.gui.list.composables.PlayerItem
 import cz.vostinak.nba.ui.gui.list.composables.PlayerItemShimmer
 import cz.vostinak.nba.ui.gui.list.model.Player
@@ -66,6 +69,16 @@ fun PlayersListScreen(
         Column(
             modifier = Modifier.padding(innerPadding)
         ) {
+            AnimatedVisibility(
+                visible = state.error != null && !state.isLoading,
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                ErrorCard(
+                    modifier = Modifier
+                )
+            }
+
             val lazyListState = rememberLazyListState()
 
             // innit loading
@@ -168,6 +181,22 @@ private fun ShowPlayersListScreenLoading(@PreviewParameter(ThemePreviewProvider 
                 players = emptyList(),
                 isLoading = true,
                 error = null
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ShowPlayersListScreenError(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
+        PlayersListScreen(
+            state = PlayersListState(
+                players = emptyList(),
+                isLoading = false,
+                error = Throwable()
             )
         )
     }

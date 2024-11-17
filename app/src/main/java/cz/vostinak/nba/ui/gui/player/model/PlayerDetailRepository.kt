@@ -17,11 +17,19 @@ class PlayerDetailRepository @Inject constructor(
      * Get player detail.
      */
     suspend fun getPlayerDetail(playerId: Long) {
-        val player = nbaPlayersRestApi.getPlayerDetail(playerId)
+        try {
+            val player = nbaPlayersRestApi.getPlayerDetail(playerId)
 
-        playerDetailState.value = PlayerDetailState(
-            isLoading = false,
-            player = player.data
-        )
+            playerDetailState.value = PlayerDetailState(
+                isLoading = false,
+                player = player.data
+            )
+        } catch (e: Exception) {
+            playerDetailState.value = PlayerDetailState(
+                player = null,
+                isLoading = false,
+                error = e
+            )
+        }
     }
 }

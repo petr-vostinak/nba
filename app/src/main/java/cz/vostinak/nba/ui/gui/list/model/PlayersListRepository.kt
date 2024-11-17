@@ -56,17 +56,26 @@ class PlayersListRepository @Inject constructor(
      * @param offset Offset.
      */
     private suspend fun getPlayersListPage(offset: Int) {
-        val playersListResponse = nbaPlayersRestApi.getPlayers(cursor = offset)
-        cursor = playersListResponse.meta.nextCursor
+        try {
+            val playersListResponse = nbaPlayersRestApi.getPlayers(cursor = offset)
+            cursor = playersListResponse.meta.nextCursor
 
-        // get old list
-        val newPlayersList = playersListState.value.players.toMutableList()
-        // add new players
-        newPlayersList.addAll(playersListResponse.data)
+            // get old list
+            val newPlayersList = playersListState.value.players.toMutableList()
+            // add new players
+            newPlayersList.addAll(playersListResponse.data)
 
-        playersListState.value = playersListState.value.copy(
-            players = newPlayersList,
-            isLoading = false
-        )
+            playersListState.value = playersListState.value.copy(
+                players = newPlayersList,
+                isLoading = false
+            )
+        } catch (e: Exception) {
+            playersListState.value = playersListState.value.copy(
+                players = emptyList(),
+                isLoading = false,
+                error = e
+            )
+        }
+
     }
 }
