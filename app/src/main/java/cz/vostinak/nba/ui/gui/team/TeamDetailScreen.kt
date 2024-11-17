@@ -1,7 +1,13 @@
 package cz.vostinak.nba.ui.gui.team
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,9 +21,13 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.R
+import cz.vostinak.nba.ui.gui.player.composables.InfoCell
+import cz.vostinak.nba.ui.gui.player.composables.SectionHeader
 import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.nba.ui.gui.team.model.TeamDetailState
 import cz.vostinak.nba.ui.theme.NBATheme
@@ -45,7 +55,7 @@ fun TeamDetailScreen(
                 ),
                 title = {
                     Text(
-                        stringResource(R.string.app_name),
+                        text = state.team?.fullName ?: "",
                         color = Color.White
                     )
                 },
@@ -67,7 +77,63 @@ fun TeamDetailScreen(
         Column(
             modifier = Modifier.padding(innerPadding)
         ) {
+            TeamLogoUtils.getLogoByAbbreviation(state.team?.abbreviation)?.let {
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1.5f),
+                    painter = painterResource(it),
+                    contentDescription = "${state.team?.fullName} logo"
+                )
+            }
 
+            SectionHeader("Basic info")
+
+            Row(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                InfoCell(
+                    modifier = Modifier.weight(1f),
+                    title = "City",
+                    value = state.team?.city ?: ""
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                InfoCell(
+                    modifier = Modifier.weight(1f),
+                    title = "Name",
+                    value = state.team?.name ?: ""
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                InfoCell(
+                    modifier = Modifier.weight(1f),
+                    title = "Abbreviation",
+                    value = state.team?.abbreviation ?: ""
+                )
+            }
+
+            SectionHeader("Whereabouts")
+
+            Row(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                InfoCell(
+                    modifier = Modifier.weight(1f),
+                    title = "Division",
+                    value = state.team?.division ?: ""
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                InfoCell(
+                    modifier = Modifier.weight(1f),
+                    title = "Conference",
+                    value = state.team?.conference ?: ""
+                )
+            }
         }
     }
 }

@@ -44,13 +44,13 @@ fun InfoCell(
                 color = MaterialTheme.colorScheme.secondaryContainer,
                 shape = MaterialTheme.shapes.medium
             )
-            .padding(16.dp)
-            .fillMaxWidth()
             .clickable(
                 enabled = onClick != null
             ) {
                 onClick?.invoke()
-            },
+            }
+            .padding(16.dp)
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
