@@ -1,14 +1,9 @@
 package cz.vostinak.nba.ui.gui.team
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,14 +17,12 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.R
-import cz.vostinak.nba.ui.gui.player.composables.InfoCell
-import cz.vostinak.nba.ui.gui.player.composables.SectionHeader
+import cz.vostinak.nba.ui.gui.team.composables.TeamDetailContent
+import cz.vostinak.nba.ui.gui.team.composables.TeamDetailShimmer
 import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.nba.ui.gui.team.model.TeamDetailState
 import cz.vostinak.nba.ui.preview.Theme
@@ -78,69 +71,27 @@ fun TeamDetailScreen(
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier.padding(innerPadding)
+        AnimatedVisibility(
+            visible = state.isLoading,
+            enter = fadeIn(),
+            exit = fadeOut()
         ) {
-            TeamLogoUtils.getLogoByAbbreviation(state.team?.abbreviation)?.let {
-                Image(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(1.5f)
-                        .background(Color.White)
-                        .padding(32.dp),
-                    painter = painterResource(it),
-                    contentDescription = stringResource(R.string.content_description_team_logo, state.team?.fullName ?: "")
-                )
-            }
-
-            SectionHeader(stringResource(R.string.section_team_basic))
-
-            Row(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                InfoCell(
-                    modifier = Modifier.weight(1f),
-                    title = stringResource(R.string.label_team_city),
-                    value = state.team?.city ?: ""
-                )
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                InfoCell(
-                    modifier = Modifier.weight(1f),
-                    title = stringResource(R.string.label_team_name),
-                    value = state.team?.name ?: ""
-                )
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                InfoCell(
-                    modifier = Modifier.weight(1f),
-                    title = stringResource(R.string.label_team_abbreviation),
-                    value = state.team?.abbreviation ?: ""
-                )
-            }
-
-            SectionHeader(stringResource(R.string.section_team_whereabouts))
-
-            Row(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                InfoCell(
-                    modifier = Modifier.weight(1f),
-                    title = stringResource(R.string.label_team_division),
-                    value = state.team?.division ?: ""
-                )
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                InfoCell(
-                    modifier = Modifier.weight(1f),
-                    title = stringResource(R.string.label_team_conference),
-                    value = state.team?.conference ?: ""
-                )
-            }
+            TeamDetailShimmer(
+                modifier = Modifier.padding(innerPadding)
+            )
         }
+
+        AnimatedVisibility(
+            visible = !state.isLoading && state.error == null,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            TeamDetailContent(
+                modifier = Modifier.padding(innerPadding),
+                state = state
+            )
+        }
+
     }
 }
 
@@ -152,6 +103,7 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
     ) {
         TeamDetailScreen(
             TeamDetailState(
+                isLoading = false,
                 team = Team(
                     id = 1,
                     name = "Hawks",
@@ -160,7 +112,24 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
                     abbreviation = "ATL",
                     conference = "East",
                     division = "Southeast"
-                )
+                ),
+                error = null
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ShowTeamDetailShimmer(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+    NBATheme(
+        darkTheme = theme.isDarkMode
+    ) {
+        TeamDetailScreen(
+            TeamDetailState(
+                isLoading = true,
+                team = null,
+                error = null
             )
         )
     }

@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.gui.player.composables
+package cz.vostinak.nba.ui.gui.commons
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,20 +13,21 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.ui.preview.Theme
 import cz.vostinak.nba.ui.preview.ThemePreviewProvider
+import cz.vostinak.nba.ui.shimmer.brandShimmerEffect
 import cz.vostinak.nba.ui.theme.NBATheme
 
 /**
- * Player info section title.
- * @param title section title
+ * Player info section title shimmer.
  */
 @Composable
-fun SectionHeader(title: String) {
+fun SectionHeaderShimmer() {
     Text(
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.primaryContainer)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        text = title,
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .brandShimmerEffect(),
+        text = "",
         style = MaterialTheme.typography.titleSmall,
         color = Color.White
     )
@@ -34,10 +35,10 @@ fun SectionHeader(title: String) {
 
 @Preview
 @Composable
-private fun ShowSectionHeader(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
+private fun ShowSectionHeaderShimmer(@PreviewParameter(ThemePreviewProvider ::class) theme: Theme) {
     NBATheme(
         darkTheme = theme.isDarkMode
     ) {
-        SectionHeader("Player Info")
+        SectionHeaderShimmer()
     }
 }

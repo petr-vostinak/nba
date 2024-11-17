@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.gui.player.composables
+package cz.vostinak.nba.ui.gui.commons
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
