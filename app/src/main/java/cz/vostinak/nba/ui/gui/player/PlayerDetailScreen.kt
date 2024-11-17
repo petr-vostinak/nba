@@ -122,7 +122,7 @@ fun PlayerDetailScreen(
                 }
             }
 
-            SectionHeader("Basic info")
+            SectionHeader(stringResource(R.string.section_player_basic))
 
             Row(
                 modifier = Modifier
@@ -131,7 +131,7 @@ fun PlayerDetailScreen(
             ) {
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Height",
+                    title = stringResource(R.string.label_player_height),
                     value = state.player?.height ?: "---"
                 )
 
@@ -141,19 +141,19 @@ fun PlayerDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Weight",
+                    title = stringResource(R.string.label_player_weight),
                     value = (state.player?.weight ?: "---") + " lbs"
                 )
 
             }
 
-            SectionHeader("Team")
+            SectionHeader(stringResource(R.string.section_player_team))
 
             InfoCell(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
-                title = "Team name",
+                title = stringResource(R.string.label_player_team),
                 value = state.player?.team?.fullName ?: "---",
                 onClick = {
                     onTeamClick?.invoke(state.player?.team?.id ?: -1)
@@ -167,7 +167,7 @@ fun PlayerDetailScreen(
             ) {
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Conference",
+                    title = stringResource(R.string.label_player_conference),
                     value = state.player?.team?.conference ?: "---"
                 )
 
@@ -177,7 +177,7 @@ fun PlayerDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Division",
+                    title = stringResource(R.string.label_player_division),
                     value = state.player?.team?.division ?: "---"
                 )
 
@@ -187,12 +187,12 @@ fun PlayerDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "City",
+                    title = stringResource(R.string.label_player_city),
                     value = state.player?.team?.city ?: "---"
                 )
             }
 
-            SectionHeader("Draft")
+            SectionHeader(stringResource(R.string.section_player_draft))
 
             Row(
                 modifier = Modifier
@@ -201,7 +201,7 @@ fun PlayerDetailScreen(
             ) {
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Year",
+                    title = stringResource(R.string.label_player_draft_year),
                     value = state.player?.draftYear?.toString() ?: "---"
                 )
 
@@ -211,7 +211,7 @@ fun PlayerDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Round",
+                    title = stringResource(R.string.label_player_draft_round),
                     value = state.player?.draftRound?.toString() ?: "---"
                 )
 
@@ -221,7 +221,7 @@ fun PlayerDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Number",
+                    title = stringResource(R.string.label_player_draft_number),
                     value = state.player?.draftNumber?.toString() ?: "---"
                 )
             }

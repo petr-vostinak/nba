@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">NBA</string>
+
+    <!-- player detail screen -->
+    <string name="section_player_basic">Basic info</string>
+    <string name="section_player_team">Team</string>
+    <string name="section_player_draft">Draft</string>
+    <string name="label_player_height">Height</string>
+    <string name="label_player_weight">Weight</string>
+    <string name="label_player_team">Team name</string>
+    <string name="label_player_conference">Conference</string>
+    <string name="label_player_division">Division</string>
+    <string name="label_player_city">City</string>
+    <string name="label_player_draft_year">Year</string>
+    <string name="label_player_draft_round">Round</string>
+    <string name="label_player_draft_number">Number</string>
+
+    <!-- team detail screen -->
+    <string name="section_team_basic">Basic info</string>
+    <string name="section_team_whereabouts">Whereabouts</string>
+    <string name="label_team_city">City</string>
+    <string name="label_team_name">Name</string>
+    <string name="label_team_abbreviation">Abbreviation</string>
+    <string name="label_team_division">Division</string>
+    <string name="label_team_conference">Conference</string>
 </resources>

@@ -87,14 +87,14 @@ fun TeamDetailScreen(
                 )
             }
 
-            SectionHeader("Basic info")
+            SectionHeader(stringResource(R.string.section_team_basic))
 
             Row(
                 modifier = Modifier.padding(16.dp)
             ) {
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "City",
+                    title = stringResource(R.string.label_team_city),
                     value = state.team?.city ?: ""
                 )
 
@@ -102,7 +102,7 @@ fun TeamDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Name",
+                    title = stringResource(R.string.label_team_name),
                     value = state.team?.name ?: ""
                 )
 
@@ -110,19 +110,19 @@ fun TeamDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Abbreviation",
+                    title = stringResource(R.string.label_team_abbreviation),
                     value = state.team?.abbreviation ?: ""
                 )
             }
 
-            SectionHeader("Whereabouts")
+            SectionHeader(stringResource(R.string.section_team_whereabouts))
 
             Row(
                 modifier = Modifier.padding(16.dp)
             ) {
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Division",
+                    title = stringResource(R.string.label_team_division),
                     value = state.team?.division ?: ""
                 )
 
@@ -130,7 +130,7 @@ fun TeamDetailScreen(
 
                 InfoCell(
                     modifier = Modifier.weight(1f),
-                    title = "Conference",
+                    title = stringResource(R.string.label_team_conference),
                     value = state.team?.conference ?: ""
                 )
             }
