@@ -74,7 +74,7 @@ fun PlayerDetailScreen(
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.content_description_back)
                         )
                     }
                 }
@@ -96,7 +96,7 @@ fun PlayerDetailScreen(
                         .size(64.dp)
                         .clip(CircleShape),
                     model = "https://randomuser.me/api/portraits/men/${state.player?.jerseyNumber}.jpg",
-                    contentDescription = "Player image",
+                    contentDescription = stringResource(R.string.content_description_player_image),
                 )
 
                 Column(

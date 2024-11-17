@@ -23,4 +23,10 @@
     <string name="label_team_abbreviation">Abbreviation</string>
     <string name="label_team_division">Division</string>
     <string name="label_team_conference">Conference</string>
+
+    <!-- images content descriptions -->
+    <string name="content_description_back">Back</string>
+    <string name="content_description_player_image">Player image</string>
+    <string name="content_description_more_info">More info</string>
+    <string name="content_description_team_logo">%s  logo</string>
 </resources>

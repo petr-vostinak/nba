@@ -67,7 +67,7 @@ fun TeamDetailScreen(
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.content_description_back)
                         )
                     }
                 }
@@ -83,7 +83,7 @@ fun TeamDetailScreen(
                         .fillMaxWidth()
                         .aspectRatio(1.5f),
                     painter = painterResource(it),
-                    contentDescription = "${state.team?.fullName} logo"
+                    contentDescription = stringResource(R.string.content_description_team_logo, state.team?.fullName ?: "")
                 )
             }
 

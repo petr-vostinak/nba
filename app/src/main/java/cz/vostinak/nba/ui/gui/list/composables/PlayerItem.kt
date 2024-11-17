@@ -14,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import cz.vostinak.nba.R
 import cz.vostinak.nba.ui.gui.list.model.Player
 import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.nba.ui.theme.NBATheme
@@ -48,7 +50,7 @@ fun PlayerItem(
                     .size(64.dp)
                     .clip(CircleShape),
                 model = "https://randomuser.me/api/portraits/men/${data.jerseyNumber}.jpg",
-                contentDescription = "Player image",
+                contentDescription = stringResource(R.string.content_description_player_image),
             )
 
             Column(
