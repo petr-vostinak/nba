@@ -31,9 +31,10 @@ fun MainNavHost() {
             val viewModel = hiltViewModel<PlayersListViewModel>()
             val state = viewModel.playersListState.collectAsState()
 
-            LaunchedEffect(Unit) {
+            if(state.value.players.isEmpty() && !state.value.isLoading && state.value.error == null) {
                 viewModel.initialLoad()
             }
+
 
             PlayersListScreen(
                 state = state.value,
@@ -53,7 +54,7 @@ fun MainNavHost() {
 
             val playerId = backStackEntry.arguments?.getString("playerId")?.toLong()
 
-            LaunchedEffect(Unit) {
+            LaunchedEffect(playerId) {
                 playerId?.let {
                     viewModel.getPlayerDetail(it)
                 }

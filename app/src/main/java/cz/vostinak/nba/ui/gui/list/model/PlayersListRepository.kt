@@ -2,6 +2,7 @@ package cz.vostinak.nba.ui.gui.list.model
 
 import cz.vostinak.nba.api.NbaPlayersRestAPI
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 /**
@@ -21,6 +22,10 @@ class PlayersListRepository @Inject constructor(
      * Initial load of players.
      */
     suspend fun initLoadPlayers() {
+        playersListState.update {
+            it.copy(isLoading = true)
+        }
+
         // reset cursor
         cursor = 0
 
