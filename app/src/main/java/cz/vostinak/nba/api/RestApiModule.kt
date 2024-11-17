@@ -30,7 +30,13 @@ object RestApiModule {
 
     @Singleton
     @Provides
-    fun nbaApi(): NbaRestAPI {
-        return RestApi.restAdapter.create(NbaRestAPI::class.java)
+    fun nbaPlayersApi(): NbaPlayersRestAPI {
+        return RestApi.restAdapter.create(NbaPlayersRestAPI::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun nbaTeamsApi(): NbaTeamsRestAPI {
+        return RestApi.restAdapter.create(NbaTeamsRestAPI::class.java)
     }
 }

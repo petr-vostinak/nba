@@ -22,4 +22,17 @@ sealed class Screens(val route: String) {
             return "player_detail/$playerId"
         }
     }
+
+    /**
+     * Teams detail.
+     */
+    object TeamsDetail: Screens("team_detail/{teamId}") {
+        /**
+         * Create route.
+         * @param teamId Team ID
+         */
+        fun createRoute(teamId: Long): String {
+            return "team_detail/$teamId"
+        }
+    }
 }

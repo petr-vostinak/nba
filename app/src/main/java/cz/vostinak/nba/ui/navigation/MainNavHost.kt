@@ -12,6 +12,8 @@ import cz.vostinak.nba.ui.gui.list.PlayersListScreen
 import cz.vostinak.nba.ui.gui.list.model.PlayersListViewModel
 import cz.vostinak.nba.ui.gui.player.PlayerDetailScreen
 import cz.vostinak.nba.ui.gui.player.model.PlayerDetailViewModel
+import cz.vostinak.nba.ui.gui.team.TeamDetailScreen
+import cz.vostinak.nba.ui.gui.team.model.TeamDetailViewModel
 
 /**
  * Main navigation.
@@ -62,8 +64,29 @@ fun MainNavHost() {
                 onBack = {
                     navController.popBackStack()
                 },
-                onTeamClick = {
-                    // TODO: navigate to team detail
+                onTeamClick = { teamId ->
+                    navController.navigate(Screens.TeamsDetail.createRoute(teamId))
+                }
+            )
+        }
+
+        // Team detail
+        composable(route = Screens.TeamsDetail.route) { backStackEntry ->
+            val viewModel = hiltViewModel<TeamDetailViewModel>()
+            val state = viewModel.teamDetailState.collectAsState()
+
+            val teamId = backStackEntry.arguments?.getString("teamId")?.toLong()
+
+            LaunchedEffect(Unit) {
+                teamId?.let {
+                    viewModel.getTeamDetail(it)
+                }
+            }
+
+            TeamDetailScreen(
+                state = state.value,
+                onBack = {
+                    navController.popBackStack()
                 }
             )
         }

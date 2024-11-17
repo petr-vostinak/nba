@@ -1,15 +1,15 @@
 package cz.vostinak.nba.ui.gui.list.model
 
-import cz.vostinak.nba.api.NbaRestAPI
+import cz.vostinak.nba.api.NbaPlayersRestAPI
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 /**
  * Players list repository.
- * @param nbaRestApi NBA REST API.
+ * @param nbaPlayersRestApi NBA REST API.
  */
 class PlayersListRepository @Inject constructor(
-    private val nbaRestApi: NbaRestAPI
+    private val nbaPlayersRestApi: NbaPlayersRestAPI
 ) {
     /** Players list state. */
     val playersListState = MutableStateFlow(PlayersListState())
@@ -51,7 +51,7 @@ class PlayersListRepository @Inject constructor(
      * @param offset Offset.
      */
     private suspend fun getPlayersListPage(offset: Int) {
-        val playersListResponse = nbaRestApi.getPlayers(cursor = offset)
+        val playersListResponse = nbaPlayersRestApi.getPlayers(cursor = offset)
         cursor = playersListResponse.meta.nextCursor
 
         // get old list

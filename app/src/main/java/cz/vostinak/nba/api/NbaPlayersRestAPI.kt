@@ -7,9 +7,9 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
- * NBA REST API.
+ * NBA players REST API.
  */
-interface NbaRestAPI {
+interface NbaPlayersRestAPI {
 
     /**
      * Get list of players.
