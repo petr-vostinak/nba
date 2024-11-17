@@ -1,6 +1,7 @@
 package cz.vostinak.nba.ui.gui.list
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,7 +35,8 @@ import cz.vostinak.nba.ui.gui.list.model.PlayersListState
 @Composable
 fun PlayersListScreen(
     state: PlayersListState,
-    onLoadNextPage: (() -> Unit)? = null
+    onLoadNextPage: (() -> Unit)? = null,
+    onPlayerDetailClick: ((Long) -> Unit)? = null
 ) {
     Scaffold(
         topBar = {
@@ -90,7 +92,9 @@ fun PlayersListScreen(
                 ) { index ->
                     val player = state.players[index]
                     PlayerItem(
-                        modifier = Modifier,
+                        modifier = Modifier.clickable {
+                            onPlayerDetailClick?.invoke(player.id)
+                        },
                         data = player
                     )
                 }

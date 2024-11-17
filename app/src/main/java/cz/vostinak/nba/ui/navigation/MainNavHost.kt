@@ -10,6 +10,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import cz.vostinak.nba.ui.gui.list.PlayersListScreen
 import cz.vostinak.nba.ui.gui.list.model.PlayersListViewModel
+import cz.vostinak.nba.ui.gui.player.PlayerDetailScreen
+import cz.vostinak.nba.ui.gui.player.model.PlayerDetailViewModel
 
 /**
  * Main navigation.
@@ -35,6 +37,33 @@ fun MainNavHost() {
                 state = state.value,
                 onLoadNextPage = {
                     viewModel.loadMore()
+                },
+                onPlayerDetailClick = { playerId ->
+                    navController.navigate(Screens.PlayerDetail.createRoute(playerId))
+                }
+            )
+        }
+
+        // Player detail
+        composable(route = Screens.PlayerDetail.route) { backStackEntry ->
+            val viewModel = hiltViewModel<PlayerDetailViewModel>()
+            val state = viewModel.playerDetailState.collectAsState()
+
+            val playerId = backStackEntry.arguments?.getString("playerId")?.toLong()
+
+            LaunchedEffect(Unit) {
+                playerId?.let {
+                    viewModel.getPlayerDetail(it)
+                }
+            }
+
+            PlayerDetailScreen(
+                state = state.value,
+                onBack = {
+                    navController.popBackStack()
+                },
+                onTeamClick = {
+                    // TODO: navigate to team detail
                 }
             )
         }
