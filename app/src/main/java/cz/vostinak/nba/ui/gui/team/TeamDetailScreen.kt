@@ -1,6 +1,7 @@
 package cz.vostinak.nba.ui.gui.team
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -84,7 +85,9 @@ fun TeamDetailScreen(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .aspectRatio(1.5f),
+                        .aspectRatio(1.5f)
+                        .background(Color.White)
+                        .padding(32.dp),
                     painter = painterResource(it),
                     contentDescription = stringResource(R.string.content_description_team_logo, state.team?.fullName ?: "")
                 )
