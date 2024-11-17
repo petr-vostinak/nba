@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "595141965068",
+    "project_id": "nba-moneta",
+    "storage_bucket": "nba-moneta.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595141965068:android:4f7b1b45d754ed39244529",
+        "android_client_info": {
+          "package_name": "cz.vostinak.nba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKHLlDmzXflyxo6t6UIbsDVarnkrdLtoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

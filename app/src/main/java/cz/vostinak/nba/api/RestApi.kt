@@ -61,6 +61,10 @@ object RestApi {
                 httpClientBuilder.readTimeout(30, TimeUnit.SECONDS)
                 httpClientBuilder.writeTimeout(30, TimeUnit.SECONDS)
 
+                if(BuildConfig.DEBUG) {
+                    httpClientBuilder.addInterceptor(LogRestApiForCrashInterceptor())
+                }
+
                 httpClientBuilder.build().let {
                     httpClientField = it
                     return it

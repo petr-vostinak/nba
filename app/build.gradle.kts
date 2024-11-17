@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -39,6 +40,11 @@ android {
                 name = "API_KEY",
                 value = "\"$apiKey\""
             )
+            buildConfigField(
+                type = "String",
+                name = "BUILD_TYPE",
+                value = "\"Debug\""
+            )
         }
 
         release {
@@ -47,6 +53,11 @@ android {
                 type = "String",
                 name = "API_KEY",
                 value = "\"$apiKey\""
+            )
+            buildConfigField(
+                type = "String",
+                name = "BUILD_TYPE",
+                value = "\"Release\""
             )
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -101,4 +112,9 @@ dependencies {
 
     // Glide
     implementation(libs.glide)
+
+    // Import the Firebase BoM
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
 }
