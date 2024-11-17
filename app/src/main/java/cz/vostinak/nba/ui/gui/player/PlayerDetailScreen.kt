@@ -37,6 +37,8 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import cz.vostinak.nba.R
 import cz.vostinak.nba.ui.gui.list.model.Player
+import cz.vostinak.nba.ui.gui.player.composables.InfoCell
+import cz.vostinak.nba.ui.gui.player.composables.SectionHeader
 import cz.vostinak.nba.ui.gui.player.model.PlayerDetailState
 import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.nba.ui.theme.NBATheme
@@ -229,89 +231,6 @@ fun PlayerDetailScreen(
                     value = state.player?.draftNumber?.toString() ?: "---"
                 )
             }
-        }
-    }
-}
-
-/**
- * Player info section title.
- * @param title section title
- */
-@Composable
-private fun SectionHeader(title: String) {
-    Text(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primaryContainer)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        text = title,
-        style = MaterialTheme.typography.titleSmall,
-        color = Color.White
-    )
-}
-
-/**
- * Player info cell.
- * @param modifier Modifier
- * @param title cell title
- * @param value cell value
- * @param onClick listener for click
- */
-@Composable
-private fun InfoCell(
-    modifier: Modifier,
-    title: String,
-    value: String,
-    onClick: (() -> Unit)? = null
-) {
-    Row(
-        modifier = modifier
-            .background(
-                color = MaterialTheme.colorScheme.secondaryContainer,
-                shape = MaterialTheme.shapes.medium
-            )
-            .padding(16.dp)
-            .fillMaxWidth()
-            .clip(MaterialTheme.shapes.medium)
-            .clickable(
-                enabled = onClick != null
-            ) {
-                onClick?.invoke()
-            },
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(
-            modifier = Modifier.weight(1f)
-        ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium,
-                color = Color.LightGray
-            )
-            Text(
-                modifier = Modifier
-                    .padding(top = 6.dp)
-                    .fillMaxWidth(),
-                text = value,
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color.White,
-                textAlign = TextAlign.End,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-
-        AnimatedVisibility(
-            visible = onClick != null
-        ) {
-            Image(
-                modifier = Modifier
-                    .padding(start = 8.dp)
-                    .size(24.dp),
-                painter = painterResource(id = R.drawable.ic_chevron_right),
-                contentDescription = "More info",
-                colorFilter = ColorFilter.tint(Color.White)
-            )
         }
     }
 }
