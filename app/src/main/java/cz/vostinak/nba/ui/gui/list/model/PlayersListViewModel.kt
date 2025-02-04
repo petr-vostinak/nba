@@ -23,7 +23,7 @@ class PlayersListViewModel @Inject constructor(
      * Initial load of players.
      */
     fun initialLoad() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.initLoadPlayers()
         }
     }
@@ -32,7 +32,7 @@ class PlayersListViewModel @Inject constructor(
      * Load more players.
      */
     fun loadMore() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.loadNexPage()
         }
     }

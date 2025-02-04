@@ -24,7 +24,7 @@ class TeamDetailViewModel @Inject constructor(
      * @param teamId Team ID.
      */
     fun getTeamDetail(teamId: Long) {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.getTeamDetail(teamId)
         }
     }

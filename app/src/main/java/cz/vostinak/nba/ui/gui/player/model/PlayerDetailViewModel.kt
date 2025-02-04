@@ -24,7 +24,7 @@ class PlayerDetailViewModel @Inject constructor(
      * @param playerId Player ID.
      */
     fun getPlayerDetail(playerId: Long) {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.getPlayerDetail(playerId)
         }
     }
