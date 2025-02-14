@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.gui.commons
+package cz.vostinak.presentation.components.infocell
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

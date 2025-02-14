@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.gui.commons
+package cz.vostinak.presentation.components.sectionheader
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth

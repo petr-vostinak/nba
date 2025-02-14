@@ -34,7 +34,7 @@ import cz.vostinak.nba.ui.gui.team.model.Team
 import cz.vostinak.core.ui.preview.Theme
 import cz.vostinak.core.ui.preview.ThemePreviewProvider
 import cz.vostinak.core.ui.theme.NBATheme
-import cz.vostinak.presentation.components.ErrorCard
+import cz.vostinak.presentation.components.errorcard.ErrorCard
 
 
 /**

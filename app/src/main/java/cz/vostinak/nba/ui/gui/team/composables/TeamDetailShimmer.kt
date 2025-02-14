@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import cz.vostinak.nba.ui.gui.commons.InfoCellShimmer
-import cz.vostinak.nba.ui.gui.commons.SectionHeaderShimmer
 import cz.vostinak.core.ui.shimmer.brandShimmerEffect
+import cz.vostinak.presentation.components.infocell.InfoCellShimmer
+import cz.vostinak.presentation.components.sectionheader.SectionHeaderShimmer
 
 /**
  * Shimmer effect for team detail screen.

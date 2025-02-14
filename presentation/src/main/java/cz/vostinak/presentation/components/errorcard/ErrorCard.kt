@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.gui.commons
+package cz.vostinak.presentation.components.errorcard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -18,10 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import cz.vostinak.nba.R
-import cz.vostinak.nba.ui.preview.Theme
-import cz.vostinak.nba.ui.preview.ThemePreviewProvider
-import cz.vostinak.nba.ui.theme.NBATheme
+import cz.vostinak.core.ui.preview.Theme
+import cz.vostinak.core.ui.preview.ThemePreviewProvider
+import cz.vostinak.core.ui.theme.NBATheme
+import cz.vostinak.presentation.R
 
 /**
  * Error card.
@@ -41,7 +41,7 @@ fun ErrorCard(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Companion.CenterHorizontally
         ) {
             // Image
             Image(
@@ -57,7 +57,7 @@ fun ErrorCard(
                 modifier = Modifier
                     .padding(start = 8.dp, top = 0.dp, end = 8.dp, bottom = 5.dp),
                 text = stringResource(id = R.string.error_card_title),
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Companion.Center,
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -67,7 +67,7 @@ fun ErrorCard(
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
                 text = stringResource(id = R.string.error_card_subtitle),
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Companion.Center,
             )
         }
     }

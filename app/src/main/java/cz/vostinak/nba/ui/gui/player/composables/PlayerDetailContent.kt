@@ -22,9 +22,9 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import cz.vostinak.nba.R
-import cz.vostinak.nba.ui.gui.commons.InfoCell
-import cz.vostinak.nba.ui.gui.commons.SectionHeader
 import cz.vostinak.nba.ui.gui.player.model.PlayerDetailState
+import cz.vostinak.presentation.components.infocell.InfoCell
+import cz.vostinak.presentation.components.sectionheader.SectionHeader
 
 /**
  * Player detail content.

@@ -16,10 +16,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.R
-import cz.vostinak.nba.ui.gui.commons.InfoCell
-import cz.vostinak.nba.ui.gui.commons.SectionHeader
 import cz.vostinak.nba.ui.gui.team.TeamLogoUtils
 import cz.vostinak.nba.ui.gui.team.model.TeamDetailState
+import cz.vostinak.presentation.components.infocell.InfoCell
+import cz.vostinak.presentation.components.sectionheader.SectionHeader
 
 /**
  * Team detail content.

@@ -20,9 +20,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import cz.vostinak.nba.ui.gui.commons.InfoCellShimmer
-import cz.vostinak.nba.ui.gui.commons.SectionHeaderShimmer
 import cz.vostinak.core.ui.shimmer.brandShimmerEffect
+import cz.vostinak.presentation.components.infocell.InfoCellShimmer
+import cz.vostinak.presentation.components.sectionheader.SectionHeaderShimmer
 
 /**
  * Player detail shimmer.
