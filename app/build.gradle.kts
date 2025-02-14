@@ -80,6 +80,7 @@ android {
 
 dependencies {
     implementation(project(":core-ui"))
+    implementation(project(":presentation"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
