@@ -26,9 +26,9 @@ import com.bumptech.glide.integration.compose.placeholder
 import cz.vostinak.nba.R
 import cz.vostinak.nba.ui.gui.list.model.Player
 import cz.vostinak.nba.ui.gui.team.model.Team
-import cz.vostinak.nba.ui.preview.Theme
-import cz.vostinak.nba.ui.preview.ThemePreviewProvider
-import cz.vostinak.nba.ui.theme.NBATheme
+import cz.vostinak.core.ui.preview.Theme
+import cz.vostinak.core.ui.preview.ThemePreviewProvider
+import cz.vostinak.core.ui.theme.NBATheme
 
 /**
  * Player item card.

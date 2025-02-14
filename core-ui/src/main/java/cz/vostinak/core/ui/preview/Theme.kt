@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.preview
+package cz.vostinak.core.ui.preview
 
 /**
  * Theme.

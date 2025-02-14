@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.shimmer
+package cz.vostinak.core.ui.shimmer
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable

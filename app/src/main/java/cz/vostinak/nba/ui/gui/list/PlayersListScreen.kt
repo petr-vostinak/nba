@@ -26,15 +26,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import cz.vostinak.nba.R
-import cz.vostinak.nba.ui.gui.commons.ErrorCard
 import cz.vostinak.nba.ui.gui.list.composables.PlayerItem
 import cz.vostinak.nba.ui.gui.list.composables.PlayerItemShimmer
 import cz.vostinak.nba.ui.gui.list.model.Player
 import cz.vostinak.nba.ui.gui.list.model.PlayersListState
 import cz.vostinak.nba.ui.gui.team.model.Team
-import cz.vostinak.nba.ui.preview.Theme
-import cz.vostinak.nba.ui.preview.ThemePreviewProvider
-import cz.vostinak.nba.ui.theme.NBATheme
+import cz.vostinak.core.ui.preview.Theme
+import cz.vostinak.core.ui.preview.ThemePreviewProvider
+import cz.vostinak.core.ui.theme.NBATheme
+import cz.vostinak.presentation.components.ErrorCard
 
 
 /**

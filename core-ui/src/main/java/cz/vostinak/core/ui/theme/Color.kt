@@ -1,4 +1,4 @@
-package cz.vostinak.nba.ui.theme
+package cz.vostinak.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

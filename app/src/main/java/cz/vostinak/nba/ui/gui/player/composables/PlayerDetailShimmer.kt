@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import cz.vostinak.nba.ui.gui.commons.InfoCellShimmer
 import cz.vostinak.nba.ui.gui.commons.SectionHeaderShimmer
-import cz.vostinak.nba.ui.shimmer.brandShimmerEffect
+import cz.vostinak.core.ui.shimmer.brandShimmerEffect
 
 /**
  * Player detail shimmer.

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import cz.vostinak.nba.ui.navigation.MainNavHost
-import cz.vostinak.nba.ui.theme.NBATheme
+import cz.vostinak.core.ui.theme.NBATheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
