@@ -23,7 +23,7 @@ import cz.vostinak.core.ui.shimmer.brandShimmerEffect
 import cz.vostinak.core.ui.theme.NBATheme
 
 /**
- * Player info cell shimmer.
+ * PlayerItemState info cell shimmer.
  * @param modifier Modifier
  */
 @Composable

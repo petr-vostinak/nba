@@ -1,4 +1,6 @@
 <resources>
+    <string name="app_name">NBA</string>
+
     <!-- player detail screen -->
     <string name="section_player_basic">Basic info</string>
     <string name="section_player_team">Team</string>
@@ -32,4 +34,5 @@
     <string name="error_card_image_desc">Error image</string>
     <string name="error_card_title">Error</string>
     <string name="error_card_subtitle">An error occurred. Please check your internet connection and try again.</string>
+    <string name="error_card_retry">Retry</string>
 </resources>

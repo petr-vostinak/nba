@@ -1,12 +1,16 @@
 package cz.vostinak.presentation.components.errorcard
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,7 +33,8 @@ import cz.vostinak.presentation.R
  */
 @Composable
 fun ErrorCard(
-    modifier: Modifier
+    modifier: Modifier,
+    onRetry: () -> Unit
 ) {
     Card(
         modifier = modifier
@@ -69,6 +74,31 @@ fun ErrorCard(
                 text = stringResource(id = R.string.error_card_subtitle),
                 textAlign = TextAlign.Companion.Center,
             )
+
+            // Divider
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+
+            // Action
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 8.dp),
+                horizontalArrangement = Arrangement.End
+            ) {
+                Text(
+                    text = stringResource(id = R.string.error_card_retry).uppercase(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .clickable {
+                            onRetry.invoke()
+                        }
+                        .padding(8.dp)
+                )
+            }
         }
     }
 }
@@ -81,6 +111,6 @@ private fun ShowErrorCard(@PreviewParameter(ThemePreviewProvider ::class) theme:
     ) {
         ErrorCard(
             modifier = Modifier
-        )
+        ) {}
     }
 }

@@ -29,7 +29,7 @@ import cz.vostinak.core.ui.theme.NBATheme
 import cz.vostinak.presentation.R
 
 /**
- * Player info cell.
+ * PlayerItemState info cell.
  * @param modifier Modifier
  * @param title cell title
  * @param value cell value

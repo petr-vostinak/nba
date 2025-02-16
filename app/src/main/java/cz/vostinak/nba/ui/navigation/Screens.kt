@@ -11,12 +11,12 @@ sealed class Screens(val route: String) {
     object PlayersList: Screens("players_list")
 
     /**
-     * Player detail.
+     * PlayerItemState detail.
      */
     object PlayerDetail: Screens("player_detail/{playerId}") {
         /**
          * Create route.
-         * @param playerId Player ID
+         * @param playerId PlayerItemState ID
          */
         fun createRoute(playerId: Long): String {
             return "player_detail/$playerId"
@@ -29,7 +29,7 @@ sealed class Screens(val route: String) {
     object TeamsDetail: Screens("team_detail/{teamId}") {
         /**
          * Create route.
-         * @param teamId Team ID
+         * @param teamId TeamState ID
          */
         fun createRoute(teamId: Long): String {
             return "team_detail/$teamId"

@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -38,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(":core-ui"))
+    implementation(project(":data"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
@@ -51,4 +54,15 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // Hilt
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
+    // Glide
+    implementation(libs.glide)
 }

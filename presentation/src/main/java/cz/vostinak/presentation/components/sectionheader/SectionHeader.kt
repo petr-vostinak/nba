@@ -16,7 +16,7 @@ import cz.vostinak.core.ui.preview.ThemePreviewProvider
 import cz.vostinak.core.ui.theme.NBATheme
 
 /**
- * Player info section title.
+ * PlayerItemState info section title.
  * @param title section title
  */
 @Composable
@@ -38,6 +38,6 @@ private fun ShowSectionHeader(@PreviewParameter(ThemePreviewProvider ::class) th
     NBATheme(
         darkTheme = theme.isDarkMode
     ) {
-        SectionHeader("Player Info")
+        SectionHeader("PlayerItemState Info")
     }
 }

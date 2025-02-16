@@ -17,7 +17,7 @@ import cz.vostinak.core.ui.shimmer.brandShimmerEffect
 import cz.vostinak.core.ui.theme.NBATheme
 
 /**
- * Player info section title shimmer.
+ * PlayerItemState info section title shimmer.
  */
 @Composable
 fun SectionHeaderShimmer() {
