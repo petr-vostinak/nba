@@ -65,4 +65,13 @@ dependencies {
 
     // Glide
     implementation(libs.glide)
+
+    // Unit testing
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.hilt.android.testing)
 }
