@@ -160,7 +160,8 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
                     city = "Atlanta",
                     abbreviation = "ATL",
                     conference = "East",
-                    division = "Southeast"
+                    division = "Southeast",
+                    logoResourceIdRes = cz.vostinak.core.ui.R.drawable.atl
                 )
             )
         )

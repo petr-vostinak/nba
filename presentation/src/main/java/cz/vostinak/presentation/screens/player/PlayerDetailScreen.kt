@@ -179,7 +179,8 @@ private fun ShowPlayerDetailScreen(@PreviewParameter(ThemePreviewProvider ::clas
                         fullName = "Golden State Warriors",
                         name = "Warriors",
                         conference = "West",
-                        division = "Pacific"
+                        division = "Pacific",
+                        logoResourceIdRes = cz.vostinak.core.ui.R.drawable.gsw
                     )
                 )
             )

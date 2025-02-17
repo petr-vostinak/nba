@@ -9,7 +9,8 @@ import javax.inject.Inject
  * Get team use case.
  */
 class GetTeamUseCase @Inject constructor(
-    private val teamRepository: TeamDetailRepository
+    private val teamRepository: TeamDetailRepository,
+    private val getTeamLogoUseCase: GetTeamLogoUseCase
 ) {
 
     /**
@@ -19,6 +20,8 @@ class GetTeamUseCase @Inject constructor(
      * @return Team.
      */
     suspend operator fun invoke(teamId: Long): Team {
-        return teamRepository.getTeamDetail(teamId).toDomain()
+        return teamRepository.getTeamDetail(teamId).toDomain().copy(
+            logoResourceIdRes = getTeamLogoUseCase(teamRepository.getTeamDetail(teamId).abbreviation)
+        )
     }
 }

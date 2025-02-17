@@ -14,5 +14,6 @@ fun TeamTO.toDomain() = Team(
     city = this.city ?: "---",
     abbreviation = this.abbreviation ?: "---",
     conference = this.conference ?: "---",
-    division = this.division ?: "---"
+    division = this.division ?: "---",
+    logoResourceIdRes = null
 )

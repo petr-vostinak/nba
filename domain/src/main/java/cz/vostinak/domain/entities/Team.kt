@@ -17,5 +17,7 @@ data class Team(
     /** TeamState conference */
     val conference: String,
     /** TeamState division */
-    val division: String
+    val division: String,
+    /** TeamState logo resource ID */
+    val logoResourceIdRes: Int?
 )

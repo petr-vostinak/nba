@@ -20,7 +20,8 @@ fun PlayerTO.toDomain() = Player(
         conference = this.team?.conference ?: "---",
         division = this.team?.division ?: "---",
         fullName = this.team?.fullName ?: "---",
-        name = this.team?.name ?: "---"
+        name = this.team?.name ?: "---",
+        logoResourceIdRes = null
     ),
     height = this.height ?: "---",
     weight = this.weight ?: "---",

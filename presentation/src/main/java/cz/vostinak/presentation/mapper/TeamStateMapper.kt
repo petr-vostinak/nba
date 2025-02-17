@@ -14,5 +14,6 @@ fun Team.toState() = TeamState(
     city = city,
     abbreviation = abbreviation,
     conference = conference,
-    division = division
+    division = division,
+    logoResourceIdRes = logoResourceIdRes
 )

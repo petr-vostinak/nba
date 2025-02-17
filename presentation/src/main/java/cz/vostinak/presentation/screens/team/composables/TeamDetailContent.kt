@@ -19,7 +19,6 @@ import cz.vostinak.presentation.components.infocell.InfoCell
 import cz.vostinak.presentation.components.sectionheader.SectionHeader
 import cz.vostinak.presentation.R
 import cz.vostinak.presentation.screens.team.state.TeamState
-import cz.vostinak.presentation.screens.team.utils.TeamLogoUtils
 
 /**
  * TeamState detail content.
@@ -34,7 +33,7 @@ fun TeamDetailContent(
     Column(
         modifier = modifier
     ) {
-        TeamLogoUtils.getLogoByAbbreviation(state.abbreviation)?.let {
+        state.logoResourceIdRes?.let {
             Image(
                 modifier = Modifier
                     .fillMaxWidth()

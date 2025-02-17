@@ -1,10 +1,11 @@
-package cz.vostinak.presentation.screens.team.utils
+package cz.vostinak.domain.usecases
 
-import cz.vostinak.presentation.R
+import cz.vostinak.core.ui.R
+import javax.inject.Inject
 
-object TeamLogoUtils {
+class GetTeamLogoUseCase @Inject constructor() {
 
-    fun getLogoByAbbreviation(abbreviation: String?): Int? {
+    operator fun invoke(abbreviation: String?): Int? {
         return when (abbreviation) {
             "ATL" -> R.drawable.atl
             "BOS" -> R.drawable.bos
@@ -39,5 +40,4 @@ object TeamLogoUtils {
             else -> null
         }
     }
-
 }
