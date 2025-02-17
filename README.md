@@ -57,7 +57,7 @@ The application is divided into the following modules:
 1.  Clone the repository: `git clone https://github.com/petr-vostinak/nba.git`
 2.  Open the project in Android Studio.
 3.  Get your API key from [BallDon'tLie](https://www.balldontlie.io/).
-4.  Create a `gradle.properties` file in the root directory of the project and add `API_KEY=your_api_key` to it.
+4.  Update a `local.properties` file in the root directory of the project and add `API_KEY=your_api_key` to it.
 5.  Run the application on an emulator or device.
 
 ## Contact
