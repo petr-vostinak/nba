@@ -1,13 +1,13 @@
 package cz.vostinak.presentation.screens.player.state
 
 /**
- * PlayerItemState detail screen state.
+ * Player detail state.
  */
-data class PlayerDetailState(
-    /** Is loading */
-    val isLoading: Boolean = true,
-    /** PlayerItemState data */
-    val player: PlayerState? = null,
-    /** Error */
-    val error: Throwable? = null
-)
+sealed interface PlayerDetailState {
+    /** Success state. */
+    data class Success(val player: PlayerState): PlayerDetailState
+    /** Loading state. */
+    data object Loading: PlayerDetailState
+    /** Error state. */
+    data class Error(val error: Throwable): PlayerDetailState
+}

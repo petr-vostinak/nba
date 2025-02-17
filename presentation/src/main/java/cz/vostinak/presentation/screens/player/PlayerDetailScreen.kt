@@ -113,7 +113,7 @@ internal fun PlayerDetailScreen(
     ) { innerPadding ->
         // Show loading shimmer
         AnimatedVisibility(
-            visible = state.isLoading,
+            visible = state is PlayerDetailState.Loading,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -124,20 +124,20 @@ internal fun PlayerDetailScreen(
 
         // Show content
         AnimatedVisibility(
-            visible = !state.isLoading && state.error == null,
+            visible = state is PlayerDetailState.Success,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
             PlayerDetailContent(
                 modifier = Modifier.padding(innerPadding),
-                state = state,
+                state = (state as PlayerDetailState.Success).player,
                 onTeamClick = onTeamClick
             )
         }
 
         // Show error
         AnimatedVisibility(
-            visible = state.error != null && !state.isLoading,
+            visible = state is PlayerDetailState.Error,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -158,7 +158,7 @@ private fun ShowPlayerDetailScreen(@PreviewParameter(ThemePreviewProvider ::clas
         darkTheme = theme.isDarkMode
     ) {
         PlayerDetailScreen(
-            state = PlayerDetailState(
+            state = PlayerDetailState.Success(
                 player = PlayerState(
                     id = 19,
                     firstName = "Stephen",
@@ -181,9 +181,7 @@ private fun ShowPlayerDetailScreen(@PreviewParameter(ThemePreviewProvider ::clas
                         conference = "West",
                         division = "Pacific"
                     )
-                ),
-                isLoading = false,
-                error = null
+                )
             )
         )
     }
@@ -196,11 +194,7 @@ private fun ShowPlayerDetailScreenLoading(@PreviewParameter(ThemePreviewProvider
         darkTheme = theme.isDarkMode
     ) {
         PlayerDetailScreen(
-            state = PlayerDetailState(
-                player = null,
-                isLoading = true,
-                error = null
-            )
+            state = PlayerDetailState.Loading
         )
     }
 }
@@ -212,11 +206,7 @@ private fun ShowPlayerDetailScreenError(@PreviewParameter(ThemePreviewProvider :
         darkTheme = theme.isDarkMode
     ) {
         PlayerDetailScreen(
-            state = PlayerDetailState(
-                player = null,
-                isLoading = false,
-                error = Throwable()
-            )
+            state = PlayerDetailState.Error(Throwable())
         )
     }
 }

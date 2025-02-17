@@ -23,8 +23,8 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import cz.vostinak.presentation.components.infocell.InfoCell
 import cz.vostinak.presentation.components.sectionheader.SectionHeader
-import cz.vostinak.presentation.screens.player.state.PlayerDetailState
 import cz.vostinak.presentation.R
+import cz.vostinak.presentation.screens.player.state.PlayerState
 
 /**
  * PlayerItemState detail content.
@@ -36,7 +36,7 @@ import cz.vostinak.presentation.R
 @Composable
 fun PlayerDetailContent(
     modifier: Modifier,
-    state: PlayerDetailState,
+    state: PlayerState,
     onTeamClick: ((Long) -> Unit)? = null
 ) {
     Column(
@@ -54,7 +54,7 @@ fun PlayerDetailContent(
                     .size(64.dp)
                     .clip(CircleShape)
                     .background(Color.White),
-                model = "https://randomuser.me/api/portraits/men/${state.player?.jerseyNumber}.jpg",
+                model = "https://randomuser.me/api/portraits/men/${state.jerseyNumber}.jpg",
                 contentDescription = stringResource(R.string.content_description_player_image),
                 failure = placeholder(R.drawable.ic_user_image_placeholder)
             )
@@ -64,7 +64,7 @@ fun PlayerDetailContent(
             ) {
                 Text(
                     modifier = Modifier,
-                    text = "${state.player?.lastName ?: ""} ${state.player?.firstName ?: ""}",
+                    text = "${state.lastName} ${state.firstName}",
                     style = MaterialTheme.typography.titleLarge,
                     color = Color.White,
                     maxLines = 1,
@@ -73,7 +73,7 @@ fun PlayerDetailContent(
 
                 Text(
                     modifier = Modifier,
-                    text = "#${state.player?.jerseyNumber ?: "NA"} | ${state.player?.position ?: "---"} | ${state.player?.country ?: "---"}",
+                    text = "#${state.jerseyNumber} | ${state.position} | ${state.country}",
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.LightGray,
                     maxLines = 1,
@@ -92,7 +92,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_height),
-                value = state.player?.height ?: "---"
+                value = state.height
             )
 
             Spacer(
@@ -102,7 +102,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_weight),
-                value = (state.player?.weight ?: "---") + " lbs"
+                value = "${state.weight} lbs"
             )
 
         }
@@ -114,9 +114,9 @@ fun PlayerDetailContent(
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
             title = stringResource(R.string.label_player_team),
-            value = state.player?.team?.fullName ?: "---",
+            value = state.team.fullName,
             onClick = {
-                onTeamClick?.invoke(state.player?.team?.id ?: -1)
+                onTeamClick?.invoke(state.team.id)
             }
         )
 
@@ -128,7 +128,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_conference),
-                value = state.player?.team?.conference ?: "---"
+                value = state.team.conference
             )
 
             Spacer(
@@ -138,7 +138,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_division),
-                value = state.player?.team?.division ?: "---"
+                value = state.team.division
             )
 
             Spacer(
@@ -148,7 +148,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_city),
-                value = state.player?.team?.city ?: "---"
+                value = state.team.city
             )
         }
 
@@ -162,7 +162,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_draft_year),
-                value = state.player?.draftYear?.toString() ?: "---"
+                value = state.draftYear.toString()
             )
 
             Spacer(
@@ -172,7 +172,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_draft_round),
-                value = state.player?.draftRound?.toString() ?: "---"
+                value = state.draftRound.toString()
             )
 
             Spacer(
@@ -182,7 +182,7 @@ fun PlayerDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_player_draft_number),
-                value = state.player?.draftNumber?.toString() ?: "---"
+                value = state.draftNumber.toString()
             )
         }
     }

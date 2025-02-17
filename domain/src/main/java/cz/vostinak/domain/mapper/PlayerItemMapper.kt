@@ -6,6 +6,6 @@ import cz.vostinak.domain.entities.PlayerItem
 fun PlayerTO.toItemDomain() = PlayerItem(
     id = id,
     fullName = "$firstName $lastName",
-    teamFullName = team?.fullName ?: "",
-    jerseyNumber = jerseyNumber ?: ""
+    teamFullName = team?.fullName ?: "---",
+    jerseyNumber = jerseyNumber ?: "NA"
 )
