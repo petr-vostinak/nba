@@ -102,7 +102,7 @@ internal fun PlayersListScreen(
             modifier = Modifier.padding(innerPadding)
         ) {
             AnimatedVisibility(
-                visible = state.error != null && !state.isLoading,
+                visible = state is PlayersListState.Error,
                 enter = fadeIn(),
                 exit = fadeOut()
             ) {
@@ -127,7 +127,7 @@ internal fun PlayersListScreen(
                 modifier = Modifier.weight(1f),
                 state = lazyListState
             ) {
-                if(state.players.isEmpty() && state.isLoading) {
+                if(state is PlayersListState.Loading) {
                     items(
                         count = 10
                     ) {
@@ -135,24 +135,26 @@ internal fun PlayersListScreen(
                     }
                 }
 
-                items(
-                    count = state.players.size,
-                    key = { index ->
-                        state.players[index].id
+                if(state is PlayersListState.Success) {
+                    items(
+                        count = state.players.size,
+                        key = { index ->
+                            state.players[index].id
+                        }
+                    ) { index ->
+                        val player = state.players[index]
+                        PlayerItem(
+                            modifier = Modifier.clickable {
+                                onPlayerDetailClick?.invoke(player.id)
+                            },
+                            state = player
+                        )
                     }
-                ) { index ->
-                    val player = state.players[index]
-                    PlayerItem(
-                        modifier = Modifier.clickable {
-                            onPlayerDetailClick?.invoke(player.id)
-                        },
-                        state = player
-                    )
                 }
             }
 
             // next page loading
-            AnimatedVisibility(state.players.isNotEmpty() && state.isLoading) {
+            AnimatedVisibility(state is PlayersListState.Success && state.isLoadingMore) {
                 LinearProgressIndicator(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -171,7 +173,7 @@ private fun ShowPlayersListScreen(@PreviewParameter(ThemePreviewProvider ::class
         darkTheme = theme.isDarkMode
     ) {
         PlayersListScreen(
-            state = PlayersListState(
+            state = PlayersListState.Success(
                 players = listOf(
                     PlayerItemState(
                         id = 1,
@@ -180,8 +182,7 @@ private fun ShowPlayersListScreen(@PreviewParameter(ThemePreviewProvider ::class
                         teamFullName = "Atlanta Hawks",
                     )
                 ),
-                isLoading = false,
-                error = null
+                isLoadingMore = false
             )
         )
     }
@@ -194,11 +195,7 @@ private fun ShowPlayersListScreenLoading(@PreviewParameter(ThemePreviewProvider 
         darkTheme = theme.isDarkMode
     ) {
         PlayersListScreen(
-            state = PlayersListState(
-                players = emptyList(),
-                isLoading = true,
-                error = null
-            )
+            state = PlayersListState.Loading
         )
     }
 }
@@ -210,11 +207,7 @@ private fun ShowPlayersListScreenError(@PreviewParameter(ThemePreviewProvider ::
         darkTheme = theme.isDarkMode
     ) {
         PlayersListScreen(
-            state = PlayersListState(
-                players = emptyList(),
-                isLoading = false,
-                error = Throwable()
-            )
+            state = PlayersListState.Error(Throwable())
         )
     }
 }

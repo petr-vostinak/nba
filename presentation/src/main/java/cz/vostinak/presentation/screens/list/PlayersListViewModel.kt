@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import cz.vostinak.domain.usecases.GetPlayersListUseCase
 import cz.vostinak.presentation.screens.list.state.PlayersListState
 import cz.vostinak.presentation.mapper.toState
+import cz.vostinak.presentation.screens.list.state.PlayerItemState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,8 +21,10 @@ class PlayersListViewModel @Inject constructor(
     private val getPlayersListUseCase: GetPlayersListUseCase
 ): ViewModel() {
 
-    private val _playersListState = MutableStateFlow(PlayersListState())
+    private val _playersListState = MutableStateFlow<PlayersListState>(PlayersListState.Loading)
     val playersListState = _playersListState.asStateFlow()
+
+    private var cachedList: List<PlayerItemState> = emptyList()
 
     init {
         initialLoad()
@@ -32,25 +35,14 @@ class PlayersListViewModel @Inject constructor(
      */
     fun initialLoad() {
         viewModelScope.launch(Dispatchers.IO) {
-            _playersListState.value = PlayersListState()
+            _playersListState.value = PlayersListState.Loading
 
             try {
-                val response = getPlayersListUseCase()
-
-                val list = response.map {
-                    it.toState()
-                }
-
-                _playersListState.value = PlayersListState(
-                    isLoading = false,
-                    players = list
-                )
+                val data = getPlayersListUseCase()
+                cachedList = data.map { it.toState() }
+                _playersListState.value = PlayersListState.Success(cachedList, false)
             } catch (e: Exception) {
-                _playersListState.value = PlayersListState(
-                    isLoading = false,
-                    players = emptyList(),
-                    error = e
-                )
+                _playersListState.value = PlayersListState.Error(e)
             }
         }
     }
@@ -60,25 +52,15 @@ class PlayersListViewModel @Inject constructor(
      */
     fun loadMore() {
         viewModelScope.launch(Dispatchers.IO) {
-            _playersListState.value = _playersListState.value.copy(isLoading = true)
+            _playersListState.value = PlayersListState.Success(cachedList, true)
 
             try {
-                val response = getPlayersListUseCase.loadNextPage()
-
-                val nextPage = response.map {
-                    it.toState()
-                }
-
-                _playersListState.value = _playersListState.value.copy(
-                    isLoading = false,
-                    players = _playersListState.value.players + nextPage
-                )
+                val data = getPlayersListUseCase.loadNextPage()
+                val nextPage = data.map { it.toState() }
+                cachedList = cachedList + nextPage
+                _playersListState.value = PlayersListState.Success(cachedList, false)
             } catch (e: Exception) {
-                _playersListState.value = PlayersListState(
-                    isLoading = false,
-                    players = emptyList(),
-                    error = e
-                )
+                _playersListState.value = PlayersListState.Error(e)
             }
         }
     }
