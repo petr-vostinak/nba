@@ -51,7 +51,7 @@ fun PlayerDetailScreen(
 ) {
     val state by viewModel.playerDetailState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(playerId) {
+    LaunchedEffect(Unit) {
         viewModel.getPlayerDetail(playerId)
     }
 
