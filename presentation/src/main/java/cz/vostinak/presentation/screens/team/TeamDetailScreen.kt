@@ -87,7 +87,7 @@ internal fun TeamDetailScreen(
                 ),
                 title = {
                     Text(
-                        text = state.team?.fullName ?: "",
+                        text = (state as? TeamDetailState.Success)?.team?.fullName ?: "",
                         color = Color.White
                     )
                 },
@@ -108,7 +108,7 @@ internal fun TeamDetailScreen(
     ) { innerPadding ->
         // Show loading shimmer
         AnimatedVisibility(
-            visible = state.isLoading,
+            visible = state is TeamDetailState.Loading,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -119,19 +119,19 @@ internal fun TeamDetailScreen(
 
         // Show content
         AnimatedVisibility(
-            visible = !state.isLoading && state.error == null,
+            visible = state is TeamDetailState.Success,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
             TeamDetailContent(
                 modifier = Modifier.padding(innerPadding),
-                state = state
+                state = (state as TeamDetailState.Success).team
             )
         }
 
         // Show error
         AnimatedVisibility(
-            visible = state.error != null && !state.isLoading,
+            visible = state is TeamDetailState.Error,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -152,8 +152,7 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
         darkTheme = theme.isDarkMode
     ) {
         TeamDetailScreen(
-            TeamDetailState(
-                isLoading = false,
+            TeamDetailState.Success(
                 team = TeamState(
                     id = 1,
                     name = "Hawks",
@@ -162,8 +161,7 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
                     abbreviation = "ATL",
                     conference = "East",
                     division = "Southeast"
-                ),
-                error = null
+                )
             )
         )
     }
@@ -176,11 +174,7 @@ private fun ShowTeamDetailShimmer(@PreviewParameter(ThemePreviewProvider ::class
         darkTheme = theme.isDarkMode
     ) {
         TeamDetailScreen(
-            TeamDetailState(
-                isLoading = true,
-                team = null,
-                error = null
-            )
+            TeamDetailState.Loading
         )
     }
 }
@@ -192,11 +186,7 @@ private fun ShowTeamDetailError(@PreviewParameter(ThemePreviewProvider ::class) 
         darkTheme = theme.isDarkMode
     ) {
         TeamDetailScreen(
-            TeamDetailState(
-                isLoading = false,
-                team = null,
-                error = Throwable()
-            )
+            TeamDetailState.Error(Throwable())
         )
     }
 }

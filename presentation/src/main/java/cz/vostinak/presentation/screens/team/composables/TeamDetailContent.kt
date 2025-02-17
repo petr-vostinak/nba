@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import cz.vostinak.presentation.components.infocell.InfoCell
 import cz.vostinak.presentation.components.sectionheader.SectionHeader
 import cz.vostinak.presentation.R
-import cz.vostinak.presentation.screens.team.state.TeamDetailState
+import cz.vostinak.presentation.screens.team.state.TeamState
 import cz.vostinak.presentation.screens.team.utils.TeamLogoUtils
 
 /**
@@ -29,12 +29,12 @@ import cz.vostinak.presentation.screens.team.utils.TeamLogoUtils
 @Composable
 fun TeamDetailContent(
     modifier: Modifier,
-    state: TeamDetailState
+    state: TeamState
 ) {
     Column(
         modifier = modifier
     ) {
-        TeamLogoUtils.getLogoByAbbreviation(state.team?.abbreviation)?.let {
+        TeamLogoUtils.getLogoByAbbreviation(state.abbreviation)?.let {
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -42,7 +42,7 @@ fun TeamDetailContent(
                     .background(Color.White)
                     .padding(32.dp),
                 painter = painterResource(it),
-                contentDescription = stringResource(R.string.content_description_team_logo, state.team?.fullName ?: "")
+                contentDescription = stringResource(R.string.content_description_team_logo, state.fullName)
             )
         }
 
@@ -54,7 +54,7 @@ fun TeamDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_team_city),
-                value = state.team?.city ?: ""
+                value = state.city
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -62,7 +62,7 @@ fun TeamDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_team_name),
-                value = state.team?.name ?: ""
+                value = state.name
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -70,7 +70,7 @@ fun TeamDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_team_abbreviation),
-                value = state.team?.abbreviation ?: ""
+                value = state.abbreviation
             )
         }
 
@@ -82,7 +82,7 @@ fun TeamDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_team_division),
-                value = state.team?.division ?: ""
+                value = state.division
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -90,7 +90,7 @@ fun TeamDetailContent(
             InfoCell(
                 modifier = Modifier.weight(1f),
                 title = stringResource(R.string.label_team_conference),
-                value = state.team?.conference ?: ""
+                value = state.conference
             )
         }
     }

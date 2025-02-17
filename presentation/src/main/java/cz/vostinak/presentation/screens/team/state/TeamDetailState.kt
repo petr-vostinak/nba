@@ -3,11 +3,11 @@ package cz.vostinak.presentation.screens.team.state
 /**
  * TeamState detail screen state.
  */
-data class TeamDetailState(
-    /** Is loading */
-    val isLoading: Boolean = true,
-    /** TeamState data */
-    val team: TeamState? = null,
-    /** Error */
-    val error: Throwable? = null
-)
+sealed interface TeamDetailState {
+    /** Success state. */
+    data class Success(val team: TeamState): TeamDetailState
+    /** Loading state. */
+    data object Loading: TeamDetailState
+    /** Error state. */
+    data class Error(val error: Throwable): TeamDetailState
+}
