@@ -40,7 +40,7 @@ android {
 
 dependencies {
     implementation(project(":core-ui"))
-    implementation(project(":data"))
+    implementation(project(":domain"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

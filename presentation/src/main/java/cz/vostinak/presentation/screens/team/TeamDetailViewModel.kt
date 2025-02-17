@@ -2,9 +2,9 @@ package cz.vostinak.presentation.screens.team
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cz.vostinak.data.repository.TeamDetailRepository
+import cz.vostinak.domain.usecases.GetTeamUseCase
+import cz.vostinak.presentation.mapper.toState
 import cz.vostinak.presentation.screens.team.state.TeamDetailState
-import cz.vostinak.presentation.screens.team.state.TeamState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class TeamDetailViewModel @Inject constructor(
-    private val repository: TeamDetailRepository
+    private val getTeamUseCase: GetTeamUseCase
 ): ViewModel() {
 
     private val _teamDetailState = MutableStateFlow(TeamDetailState())
@@ -32,19 +32,11 @@ class TeamDetailViewModel @Inject constructor(
             _teamDetailState.value = TeamDetailState()
 
             try {
-                val response = repository.getTeamDetail(teamId)
+                val response = getTeamUseCase(teamId)
 
                 _teamDetailState.value = _teamDetailState.value.copy(
                     isLoading = false,
-                    team = TeamState(
-                        id = response.id,
-                        abbreviation = response.abbreviation ?: "",
-                        city = response.city ?: "",
-                        conference = response.conference ?: "",
-                        division = response.division ?: "",
-                        fullName = response.fullName ?: "",
-                        name = response.name ?: ""
-                    )
+                    team = response.toState()
                 )
             } catch (e: Exception) {
                 _teamDetailState.value = _teamDetailState.value.copy(

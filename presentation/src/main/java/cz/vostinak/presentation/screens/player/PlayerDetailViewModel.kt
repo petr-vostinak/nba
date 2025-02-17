@@ -2,10 +2,9 @@ package cz.vostinak.presentation.screens.player
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cz.vostinak.data.repository.PlayerDetailRepository
+import cz.vostinak.domain.usecases.GetPlayerUseCase
 import cz.vostinak.presentation.screens.player.state.PlayerDetailState
-import cz.vostinak.presentation.screens.player.state.PlayerState
-import cz.vostinak.presentation.screens.team.state.TeamState
+import cz.vostinak.presentation.mapper.toState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +17,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class PlayerDetailViewModel @Inject constructor(
-    private val repository: PlayerDetailRepository
+    private val getPlayerUseCase: GetPlayerUseCase
 ) : ViewModel() {
 
     private val _playerDetailState = MutableStateFlow(PlayerDetailState())
@@ -33,35 +32,11 @@ class PlayerDetailViewModel @Inject constructor(
             _playerDetailState.value = PlayerDetailState()
 
             try {
-                val response = repository.getPlayerDetail(playerId)
-
-                val playerDetail = PlayerState(
-                    id = response.id,
-                    firstName = response.firstName ?: "",
-                    lastName = response.lastName ?: "",
-                    position = response.position ?: "",
-                    team = TeamState(
-                        id = response.team?.id ?: 0,
-                        abbreviation = response.team?.abbreviation ?: "",
-                        city = response.team?.city ?: "",
-                        conference = response.team?.conference ?: "",
-                        division = response.team?.division ?: "",
-                        fullName = response.team?.fullName ?: "",
-                        name = response.team?.name ?: ""
-                    ),
-                    height = response.height ?: "",
-                    weight = response.weight ?: "",
-                    college = response.college ?: "",
-                    draftYear = response.draftYear.toString(),
-                    draftRound = response.draftRound.toString(),
-                    draftNumber = response.draftNumber.toString(),
-                    country = response.country ?: "",
-                    jerseyNumber = response.jerseyNumber.toString()
-                )
+                val response = getPlayerUseCase(playerId)
 
                 _playerDetailState.value = _playerDetailState.value.copy(
                     isLoading = false,
-                    player = playerDetail
+                    player = response.toState()
                 )
             } catch (e: Exception) {
                 _playerDetailState.value = _playerDetailState.value.copy(

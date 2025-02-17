@@ -2,9 +2,9 @@ package cz.vostinak.presentation.screens.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cz.vostinak.data.repository.PlayersListRepository
-import cz.vostinak.presentation.screens.list.state.PlayerItemState
+import cz.vostinak.domain.usecases.GetPlayersListUseCase
 import cz.vostinak.presentation.screens.list.state.PlayersListState
+import cz.vostinak.presentation.mapper.toState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class PlayersListViewModel @Inject constructor(
-    private val repository: PlayersListRepository
+    private val getPlayersListUseCase: GetPlayersListUseCase
 ): ViewModel() {
 
     private val _playersListState = MutableStateFlow(PlayersListState())
@@ -35,15 +35,10 @@ class PlayersListViewModel @Inject constructor(
             _playersListState.value = PlayersListState()
 
             try {
-                val response = repository.initLoadPlayers()
+                val response = getPlayersListUseCase()
 
                 val list = response.map {
-                    PlayerItemState(
-                        id = it.id,
-                        fullName = "${it.firstName} ${it.lastName}",
-                        teamFullName = it.team?.fullName ?: "",
-                        jerseyNumber = it.jerseyNumber.toString()
-                    )
+                    it.toState()
                 }
 
                 _playersListState.value = PlayersListState(
@@ -68,15 +63,10 @@ class PlayersListViewModel @Inject constructor(
             _playersListState.value = _playersListState.value.copy(isLoading = true)
 
             try {
-                val response = repository.loadNexPage()
+                val response = getPlayersListUseCase.loadNextPage()
 
                 val nextPage = response.map {
-                    PlayerItemState(
-                        id = it.id,
-                        fullName = "${it.firstName} ${it.lastName}",
-                        teamFullName = it.team?.fullName ?: "",
-                        jerseyNumber = it.jerseyNumber.toString()
-                    )
+                    it.toState()
                 }
 
                 _playersListState.value = _playersListState.value.copy(
