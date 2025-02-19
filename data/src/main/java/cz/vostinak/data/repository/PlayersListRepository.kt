@@ -21,23 +21,22 @@ class PlayersListRepository @Inject constructor(
         // reset cursor
         cursor = 0
 
-        return getPlayersListPage(cursor)
+        return getPlayersListPage()
     }
 
     /**
      * Load next page of players.
      */
     suspend fun loadNexPage(): List<PlayerTO> {
-        return getPlayersListPage(cursor)
+        return getPlayersListPage()
     }
 
     /**
      * Get players list page.
-     * @param offset Offset.
      */
-    private suspend fun getPlayersListPage(offset: Int): List<PlayerTO> {
+    private suspend fun getPlayersListPage(): List<PlayerTO> {
         try {
-            val playersListResponse = nbaPlayersRestApi.getPlayers(cursor = offset)
+            val playersListResponse = nbaPlayersRestApi.getPlayers(cursor = cursor)
             cursor = playersListResponse.meta.nextCursor
 
             return playersListResponse.data
