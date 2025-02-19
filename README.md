@@ -38,6 +38,8 @@ The application is divided into the following modules:
 *   **`data`:** The module for data handling (Repositories, Data Sources).
 *   **`core-ui`:** The module for shared UI theme.
 
+![Architecture Diagram](Android%20Showcase%20Diagram.drawio.png)
+
 ## Why is the Application Built This Way?
 
 *   **Clean Architecture:** Using Clean Architecture allows for the separation of business logic from the UI and framework. This leads to better testability, maintainability, and extensibility of the code.
