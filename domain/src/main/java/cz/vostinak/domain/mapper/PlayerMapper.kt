@@ -26,9 +26,9 @@ fun PlayerTO.toDomain() = Player(
     height = this.height ?: "---",
     weight = this.weight ?: "---",
     college = this.college ?: "---",
-    draftYear = this.draftYear.toString(),
-    draftRound = this.draftRound.toString(),
-    draftNumber = this.draftNumber.toString(),
+    draftYear = this.draftYear?.toString() ?: "---",
+    draftRound = this.draftRound?.toString() ?: "---",
+    draftNumber = this.draftNumber?.toString() ?: "---",
     country = this.country ?: "---",
     jerseyNumber = this.jerseyNumber ?: "NA"
 )
