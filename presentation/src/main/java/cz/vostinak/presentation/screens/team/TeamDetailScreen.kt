@@ -31,8 +31,8 @@ import cz.vostinak.presentation.components.errorcard.ErrorCard
 import cz.vostinak.presentation.R
 import cz.vostinak.presentation.screens.team.composables.TeamDetailContent
 import cz.vostinak.presentation.screens.team.composables.TeamDetailShimmer
-import cz.vostinak.presentation.screens.team.state.TeamDetailState
 import cz.vostinak.presentation.screens.team.state.TeamState
+import cz.vostinak.presentation.state.UiState
 
 /**
  * TeamState detail screen.
@@ -71,7 +71,7 @@ fun TeamDetailScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun TeamDetailScreen(
-    state: TeamDetailState,
+    state: UiState<TeamState>,
     onBack: (() -> Unit)? = null,
     onRetry: (() -> Unit)? = null
 ) {
@@ -87,7 +87,7 @@ internal fun TeamDetailScreen(
                 ),
                 title = {
                     Text(
-                        text = (state as? TeamDetailState.Success)?.team?.fullName ?: "",
+                        text = (state as? UiState.Success)?.data?.fullName ?: "",
                         color = Color.White
                     )
                 },
@@ -108,7 +108,7 @@ internal fun TeamDetailScreen(
     ) { innerPadding ->
         // Show loading shimmer
         AnimatedVisibility(
-            visible = state is TeamDetailState.Loading,
+            visible = state is UiState.Loading,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -119,19 +119,19 @@ internal fun TeamDetailScreen(
 
         // Show content
         AnimatedVisibility(
-            visible = state is TeamDetailState.Success,
+            visible = state is UiState.Success,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
             TeamDetailContent(
                 modifier = Modifier.padding(innerPadding),
-                state = (state as TeamDetailState.Success).team
+                state = (state as UiState.Success).data
             )
         }
 
         // Show error
         AnimatedVisibility(
-            visible = state is TeamDetailState.Error,
+            visible = state is UiState.Error,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -152,8 +152,8 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
         darkTheme = theme.isDarkMode
     ) {
         TeamDetailScreen(
-            TeamDetailState.Success(
-                team = TeamState(
+            UiState.Success(
+                data = TeamState(
                     id = 1,
                     name = "Hawks",
                     fullName = "Atlanta Hawks",
@@ -175,7 +175,7 @@ private fun ShowTeamDetailShimmer(@PreviewParameter(ThemePreviewProvider ::class
         darkTheme = theme.isDarkMode
     ) {
         TeamDetailScreen(
-            TeamDetailState.Loading
+            UiState.Loading
         )
     }
 }
@@ -187,7 +187,7 @@ private fun ShowTeamDetailError(@PreviewParameter(ThemePreviewProvider ::class) 
         darkTheme = theme.isDarkMode
     ) {
         TeamDetailScreen(
-            TeamDetailState.Error(Throwable())
+            UiState.Error(Throwable())
         )
     }
 }

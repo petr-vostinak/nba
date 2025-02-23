@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cz.vostinak.domain.usecases.GetTeamUseCase
 import cz.vostinak.presentation.mapper.toState
-import cz.vostinak.presentation.screens.team.state.TeamDetailState
+import cz.vostinak.presentation.screens.team.state.TeamState
+import cz.vostinak.presentation.state.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,7 @@ class TeamDetailViewModel @Inject constructor(
     private val getTeamUseCase: GetTeamUseCase
 ): ViewModel() {
 
-    private val _teamDetailState = MutableStateFlow<TeamDetailState>(TeamDetailState.Loading)
+    private val _teamDetailState = MutableStateFlow<UiState<TeamState>>(UiState.Loading)
     val teamDetailState = _teamDetailState.asStateFlow()
 
     /**
@@ -29,13 +30,13 @@ class TeamDetailViewModel @Inject constructor(
      */
     fun getTeamDetail(teamId: Long) {
         viewModelScope.launch(Dispatchers.IO) {
-            _teamDetailState.value = TeamDetailState.Loading
+            _teamDetailState.value = UiState.Loading
 
             try {
                 val data = getTeamUseCase(teamId)
-                _teamDetailState.value = TeamDetailState.Success(data.toState())
+                _teamDetailState.value = UiState.Success(data.toState())
             } catch (e: Exception) {
-                _teamDetailState.value = TeamDetailState.Error(e)
+                _teamDetailState.value = UiState.Error(e)
             }
         }
     }

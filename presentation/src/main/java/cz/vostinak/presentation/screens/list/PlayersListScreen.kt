@@ -35,8 +35,8 @@ import cz.vostinak.presentation.components.errorcard.ErrorCard
 import cz.vostinak.presentation.components.playeritem.PlayerItem
 import cz.vostinak.presentation.components.playeritem.PlayerItemShimmer
 import cz.vostinak.presentation.screens.list.state.PlayerItemState
-import cz.vostinak.presentation.screens.list.state.PlayersListState
 import cz.vostinak.presentation.R
+import cz.vostinak.presentation.state.UiState
 
 /**
  * Players list screen.
@@ -74,7 +74,7 @@ fun PlayersListScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PlayersListScreen(
-    state: PlayersListState,
+    state: UiState<List<PlayerItemState>>,
     onLoadNextPage: (() -> Unit)? = null,
     onPlayerDetailClick: ((Long) -> Unit)? = null,
     onRetry: (() -> Unit)? = null
@@ -102,7 +102,7 @@ internal fun PlayersListScreen(
             modifier = Modifier.padding(innerPadding)
         ) {
             AnimatedVisibility(
-                visible = state is PlayersListState.Error,
+                visible = state is UiState.Error,
                 enter = fadeIn(),
                 exit = fadeOut()
             ) {
@@ -127,7 +127,7 @@ internal fun PlayersListScreen(
                 modifier = Modifier.weight(1f),
                 state = lazyListState
             ) {
-                if(state is PlayersListState.Loading) {
+                if(state is UiState.Loading) {
                     items(
                         count = 10
                     ) {
@@ -135,14 +135,14 @@ internal fun PlayersListScreen(
                     }
                 }
 
-                if(state is PlayersListState.Success) {
+                if(state is UiState.Success) {
                     items(
-                        count = state.players.size,
+                        count = state.data.size,
                         key = { index ->
-                            state.players[index].id
+                            state.data[index].id
                         }
                     ) { index ->
-                        val player = state.players[index]
+                        val player = state.data[index]
                         PlayerItem(
                             modifier = Modifier.clickable {
                                 onPlayerDetailClick?.invoke(player.id)
@@ -154,7 +154,7 @@ internal fun PlayersListScreen(
             }
 
             // next page loading
-            AnimatedVisibility(state is PlayersListState.Success && state.isLoadingMore) {
+            AnimatedVisibility(state is UiState.Success && state.isLoadingMore) {
                 LinearProgressIndicator(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -173,8 +173,8 @@ private fun ShowPlayersListScreen(@PreviewParameter(ThemePreviewProvider ::class
         darkTheme = theme.isDarkMode
     ) {
         PlayersListScreen(
-            state = PlayersListState.Success(
-                players = listOf(
+            state = UiState.Success(
+                data = listOf(
                     PlayerItemState(
                         id = 1,
                         fullName = "Stephen Curry",
@@ -195,7 +195,7 @@ private fun ShowPlayersListScreenLoading(@PreviewParameter(ThemePreviewProvider 
         darkTheme = theme.isDarkMode
     ) {
         PlayersListScreen(
-            state = PlayersListState.Loading
+            state = UiState.Loading
         )
     }
 }
@@ -207,7 +207,7 @@ private fun ShowPlayersListScreenError(@PreviewParameter(ThemePreviewProvider ::
         darkTheme = theme.isDarkMode
     ) {
         PlayersListScreen(
-            state = PlayersListState.Error(Throwable())
+            state = UiState.Error(Throwable())
         )
     }
 }

@@ -28,12 +28,12 @@ import cz.vostinak.core.ui.preview.Theme
 import cz.vostinak.core.ui.preview.ThemePreviewProvider
 import cz.vostinak.core.ui.theme.NBATheme
 import cz.vostinak.presentation.components.errorcard.ErrorCard
-import cz.vostinak.presentation.screens.player.state.PlayerDetailState
 import cz.vostinak.presentation.R
 import cz.vostinak.presentation.screens.player.composables.PlayerDetailContent
 import cz.vostinak.presentation.screens.player.composables.PlayerDetailShimmer
 import cz.vostinak.presentation.screens.player.state.PlayerState
 import cz.vostinak.presentation.screens.team.state.TeamState
+import cz.vostinak.presentation.state.UiState
 
 /**
  * PlayerItemState detail screen.
@@ -75,7 +75,7 @@ fun PlayerDetailScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun PlayerDetailScreen(
-    state: PlayerDetailState,
+    state: UiState<PlayerState>,
     onBack: (() -> Unit)? = null,
     onTeamClick: ((Long) -> Unit)? = null,
     onRetry: (() -> Unit)? = null
@@ -113,7 +113,7 @@ internal fun PlayerDetailScreen(
     ) { innerPadding ->
         // Show loading shimmer
         AnimatedVisibility(
-            visible = state is PlayerDetailState.Loading,
+            visible = state is UiState.Loading,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -124,20 +124,20 @@ internal fun PlayerDetailScreen(
 
         // Show content
         AnimatedVisibility(
-            visible = state is PlayerDetailState.Success,
+            visible = state is UiState.Success,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
             PlayerDetailContent(
                 modifier = Modifier.padding(innerPadding),
-                state = (state as PlayerDetailState.Success).player,
+                state = (state as UiState.Success).data,
                 onTeamClick = onTeamClick
             )
         }
 
         // Show error
         AnimatedVisibility(
-            visible = state is PlayerDetailState.Error,
+            visible = state is UiState.Error,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
@@ -158,8 +158,8 @@ private fun ShowPlayerDetailScreen(@PreviewParameter(ThemePreviewProvider ::clas
         darkTheme = theme.isDarkMode
     ) {
         PlayerDetailScreen(
-            state = PlayerDetailState.Success(
-                player = PlayerState(
+            state = UiState.Success(
+                data = PlayerState(
                     id = 19,
                     firstName = "Stephen",
                     lastName = "Curry",
@@ -195,7 +195,7 @@ private fun ShowPlayerDetailScreenLoading(@PreviewParameter(ThemePreviewProvider
         darkTheme = theme.isDarkMode
     ) {
         PlayerDetailScreen(
-            state = PlayerDetailState.Loading
+            state = UiState.Loading
         )
     }
 }
@@ -207,7 +207,7 @@ private fun ShowPlayerDetailScreenError(@PreviewParameter(ThemePreviewProvider :
         darkTheme = theme.isDarkMode
     ) {
         PlayerDetailScreen(
-            state = PlayerDetailState.Error(Throwable())
+            state = UiState.Error(Throwable())
         )
     }
 }
