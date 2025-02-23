@@ -29,7 +29,7 @@ import cz.vostinak.presentation.components.sectionheader.SectionHeaderShimmer
  */
 @Composable
 fun PlayerDetailShimmer(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier

@@ -3,6 +3,7 @@ package cz.vostinak.presentation.screens.team
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -106,39 +107,38 @@ internal fun TeamDetailScreen(
             )
         }
     ) { innerPadding ->
-        // Show loading shimmer
-        AnimatedVisibility(
-            visible = state is UiState.Loading,
-            enter = fadeIn(),
-            exit = fadeOut()
+        Box(
+            modifier = Modifier.padding(innerPadding)
         ) {
-            TeamDetailShimmer(
-                modifier = Modifier.padding(innerPadding)
-            )
-        }
-
-        // Show content
-        AnimatedVisibility(
-            visible = state is UiState.Success,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            TeamDetailContent(
-                modifier = Modifier.padding(innerPadding),
-                state = (state as UiState.Success).data
-            )
-        }
-
-        // Show error
-        AnimatedVisibility(
-            visible = state is UiState.Error,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            ErrorCard(
-                modifier = Modifier.padding(innerPadding)
+            // Show loading shimmer
+            AnimatedVisibility(
+                visible = state is UiState.Loading,
+                enter = fadeIn(),
+                exit = fadeOut()
             ) {
-                onRetry?.invoke()
+                TeamDetailShimmer()
+            }
+
+            // Show content
+            AnimatedVisibility(
+                visible = state is UiState.Success,
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                TeamDetailContent(
+                    state = (state as UiState.Success).data
+                )
+            }
+
+            // Show error
+            AnimatedVisibility(
+                visible = state is UiState.Error,
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                ErrorCard{
+                    onRetry?.invoke()
+                }
             }
         }
 

@@ -27,7 +27,7 @@ import cz.vostinak.presentation.screens.team.state.TeamState
  */
 @Composable
 fun TeamDetailContent(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     state: TeamState
 ) {
     Column(

@@ -33,7 +33,7 @@ import cz.vostinak.presentation.R
  */
 @Composable
 fun ErrorCard(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     onRetry: () -> Unit
 ) {
     Card(

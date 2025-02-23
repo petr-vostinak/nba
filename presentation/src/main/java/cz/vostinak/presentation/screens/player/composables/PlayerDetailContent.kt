@@ -33,7 +33,7 @@ import cz.vostinak.presentation.screens.player.state.PlayerState
  */
 @Composable
 fun PlayerDetailContent(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     state: PlayerState,
     onTeamClick: ((Long) -> Unit)? = null
 ) {
