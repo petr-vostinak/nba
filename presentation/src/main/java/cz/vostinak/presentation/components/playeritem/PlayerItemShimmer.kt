@@ -18,7 +18,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import cz.vostinak.core.ui.preview.Theme
 import cz.vostinak.core.ui.preview.ThemePreviewProvider
 import cz.vostinak.core.ui.shimmer.brandShimmerEffect
@@ -27,7 +26,6 @@ import cz.vostinak.core.ui.theme.NBATheme
 /**
  * PlayerItemState item card with shimmer effect.
  */
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun PlayerItemShimmer() {
     Card(

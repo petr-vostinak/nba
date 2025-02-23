@@ -16,13 +16,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
-import com.bumptech.glide.integration.compose.placeholder
+import coil.compose.AsyncImage
 import cz.vostinak.core.ui.preview.Theme
 import cz.vostinak.core.ui.preview.ThemePreviewProvider
 import cz.vostinak.core.ui.theme.NBATheme
@@ -34,7 +33,6 @@ import cz.vostinak.presentation.screens.list.state.PlayerItemState
  * @param modifier Modifier
  * @param state PlayerItemState
  */
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun PlayerItem(
     modifier: Modifier,
@@ -50,14 +48,15 @@ fun PlayerItem(
             modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            GlideImage(
+            AsyncImage(
                 modifier = Modifier
                     .size(64.dp)
                     .clip(CircleShape)
                     .background(Color.White),
                 model = "https://randomuser.me/api/portraits/men/${state.jerseyNumber}.jpg",
                 contentDescription = stringResource(R.string.content_description_player_image),
-                failure = placeholder(R.drawable.ic_user_image_placeholder)
+                placeholder = painterResource(R.drawable.ic_user_image_placeholder),
+                error = painterResource(R.drawable.ic_user_image_placeholder)
             )
 
             Column(

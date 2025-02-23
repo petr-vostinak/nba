@@ -19,7 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import cz.vostinak.core.ui.shimmer.brandShimmerEffect
 import cz.vostinak.presentation.components.infocell.InfoCellShimmer
 import cz.vostinak.presentation.components.sectionheader.SectionHeaderShimmer
@@ -28,7 +27,6 @@ import cz.vostinak.presentation.components.sectionheader.SectionHeaderShimmer
  * PlayerItemState detail shimmer.
  * @param modifier Modifier
  */
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun PlayerDetailShimmer(
     modifier: Modifier

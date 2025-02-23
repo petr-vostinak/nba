@@ -63,8 +63,8 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    // Glide
-    implementation(libs.glide)
+    // Coil
+    implementation(libs.coil.compose)
 
     // Unit testing
     testImplementation(libs.junit)
