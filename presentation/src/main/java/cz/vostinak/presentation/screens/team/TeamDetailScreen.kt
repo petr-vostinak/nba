@@ -1,8 +1,5 @@
 package cz.vostinak.presentation.screens.team
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -110,38 +107,22 @@ internal fun TeamDetailScreen(
         Box(
             modifier = Modifier.padding(innerPadding)
         ) {
-            // Show loading shimmer
-            AnimatedVisibility(
-                visible = state is UiState.Loading,
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
-                TeamDetailShimmer()
-            }
+            when (state) {
+                is UiState.Loading -> {
+                    TeamDetailShimmer()
+                }
 
-            // Show content
-            AnimatedVisibility(
-                visible = state is UiState.Success,
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
-                TeamDetailContent(
-                    state = (state as UiState.Success).data
-                )
-            }
+                is UiState.Success -> {
+                    TeamDetailContent(state = state.data)
+                }
 
-            // Show error
-            AnimatedVisibility(
-                visible = state is UiState.Error,
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
-                ErrorCard{
-                    onRetry?.invoke()
+                is UiState.Error -> {
+                    ErrorCard {
+                        onRetry?.invoke()
+                    }
                 }
             }
         }
-
     }
 }
 
