@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data-room"))
     implementation(project(":data"))
     implementation(project(":core-ui"))
 
