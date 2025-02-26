@@ -10,7 +10,7 @@ import cz.vostinak.room.team.TeamEntity
 /**
  * Application database.
  */
-@Database(entities = [PlayerEntity::class, TeamEntity::class], version = 1)
+@Database(entities = [PlayerEntity::class, TeamEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
     /**
      * Player DAO.
