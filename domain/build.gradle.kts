@@ -34,7 +34,7 @@ android {
 
 dependencies {
     implementation(project(":data-room"))
-    implementation(project(":data"))
+    implementation(project(":data-api"))
     implementation(project(":core-ui"))
 
     implementation(libs.androidx.core.ktx)

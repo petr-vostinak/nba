@@ -23,6 +23,6 @@ rootProject.name = "NBA"
 include(":app")
 include(":core-ui")
 include(":presentation")
-include(":data")
+include(":data-api")
 include(":domain")
 include(":data-room")
