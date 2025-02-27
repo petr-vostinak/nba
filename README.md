@@ -4,8 +4,8 @@ This application is a demonstration of my skills in developing modern Android ap
 
 ## Key Features
 
-*   **Player List View:** Users can browse a paged list of NBA players.
-*   **Player Detail:** Display detailed information about a specific player
+*   **Player List View:** Users can browse a paged list of NBA players from the API..
+*   **Player Detail:** Display detailed information about a specific player. Either from the API or from the local database if the record is not older than 24 hours.
 *   **Team Detail:** Display detailed information about a specific team.
 
 ## Technologies and Libraries Used
@@ -16,8 +16,10 @@ This application is a demonstration of my skills in developing modern Android ap
 *   **Hilt:** Dependency injection framework to simplify dependency management.
 *   **Coroutines:** For asynchronous operations and thread management.
 *   **Flow:** For reactive programming and working with data streams.
+*   **Room:** For local database storage.
 *   **Retrofit:** For network communication with the API.
 *   **OkHttp:** For efficient HTTP requests.
+*   **Coil:** For image loading and caching.
 *   **Mockito:** For unit testing.
 *   **JUnit:** Testing framework.
 
@@ -35,7 +37,8 @@ The application is divided into the following modules:
 *   **`app`:** The application module that contains navigation and launches the application.
 *   **`presentation`:** The module for data presentation and UI logic (ViewModels, UI states).
 *   **`domain`:** The module with business logic (Use Cases, Entities).
-*   **`data`:** The module for data handling (Repositories, Data Sources).
+*   **`data-api`:** The module for API data handling (Repositories, Data Sources).
+*   **`data-room`:** The module for Room database data handling (Repositories, Data Sources).
 *   **`core-ui`:** The module for shared UI theme.
 
 ![Architecture Diagram](Android%20Showcase%20Diagram.drawio.png)
@@ -50,7 +53,6 @@ The application is divided into the following modules:
 
 ## Future Improvements
 
-*   **Local Database (Room):** Implementing a local database for offline mode and data caching.
 *   **More Tests:** Expanding tests to cover more scenarios and coverage.
 *   **Instrumented tests:** Adding instrumented tests for testing the UI.
 
