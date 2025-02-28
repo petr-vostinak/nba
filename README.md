@@ -20,6 +20,7 @@ This application is a demonstration of my skills in developing modern Android ap
 *   **Retrofit:** For network communication with the API.
 *   **OkHttp:** For efficient HTTP requests.
 *   **Coil:** For image loading and caching.
+*   **Splash screen API:** For splash screen.
 *   **Mockito:** For unit testing.
 *   **JUnit:** Testing framework.
 

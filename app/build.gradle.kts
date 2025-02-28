@@ -85,4 +85,7 @@ dependencies {
 
     // Google Tag Manager
     implementation(libs.play.services.tagmanager)
+
+    // Splash screen API
+    implementation(libs.androidx.core.splashscreen)
 }
