@@ -15,11 +15,10 @@ interface PlayerDao {
      * Where timestamp is greater than given value.
      * Default value is 24 hours ago.
      * @param playerId Player ID
-     * @param timestamp Timestamp
      * @return Player entity
      */
-    @Query("SELECT * FROM players WHERE id = :playerId AND timestamp > :timestamp")
-    fun getPlayer(playerId: Long, timestamp: Long = System.currentTimeMillis() - 24 * 60 * 60 * 1000): PlayerEntity?
+    @Query("SELECT * FROM players WHERE id = :playerId")
+    fun getPlayer(playerId: Long): PlayerEntity?
 
     /**
      * Insert player.
@@ -27,4 +26,10 @@ interface PlayerDao {
      */
     @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
     fun insertPlayer(player: PlayerEntity)
+
+    /**
+     * Delete old data of players older than 24 hours.
+     */
+    @Query("DELETE FROM players WHERE timestamp < :timestamp")
+    fun deleteOldData(timestamp: Long = System.currentTimeMillis() - 24 * 60 * 60 * 1000)
 }

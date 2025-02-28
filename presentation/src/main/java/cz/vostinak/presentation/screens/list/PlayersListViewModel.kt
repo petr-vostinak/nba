@@ -2,6 +2,7 @@ package cz.vostinak.presentation.screens.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cz.vostinak.domain.usecases.DeleteOldDataUseCase
 import cz.vostinak.domain.usecases.GetPlayersListUseCase
 import cz.vostinak.presentation.mapper.toState
 import cz.vostinak.presentation.screens.list.state.PlayerItemState
@@ -18,7 +19,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class PlayersListViewModel @Inject constructor(
-    private val getPlayersListUseCase: GetPlayersListUseCase
+    private val getPlayersListUseCase: GetPlayersListUseCase,
+    private val deleteOldDataUseCase: DeleteOldDataUseCase
 ): ViewModel() {
 
     private val _playersListState = MutableStateFlow<UiState<List<PlayerItemState>>>(UiState.Loading)
@@ -35,6 +37,7 @@ class PlayersListViewModel @Inject constructor(
      */
     fun initialLoad() {
         viewModelScope.launch(Dispatchers.IO) {
+            deleteOldDataUseCase()
             _playersListState.value = UiState.Loading
 
             try {
