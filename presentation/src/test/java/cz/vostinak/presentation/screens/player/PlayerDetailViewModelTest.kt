@@ -5,7 +5,8 @@ import cz.vostinak.domain.entities.Player
 import cz.vostinak.domain.entities.Team
 import cz.vostinak.domain.usecases.GetPlayerUseCase
 import cz.vostinak.presentation.mapper.toState
-import cz.vostinak.presentation.screens.player.state.PlayerDetailState
+import cz.vostinak.presentation.screens.player.state.PlayerState
+import cz.vostinak.presentation.state.UiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -79,7 +80,7 @@ class PlayerDetailViewModelTest {
 
         // Then
         val state = viewModel.playerDetailState.value
-        Assert.assertEquals(PlayerDetailState.Success(testPlayer.toState()), state)
+        Assert.assertEquals(UiState<PlayerState>.Success(testPlayer.toState()), state)
     }
 
     @Test
@@ -94,7 +95,7 @@ class PlayerDetailViewModelTest {
 
         // Then
         val state = viewModel.playerDetailState.value
-        Assert.assertEquals(PlayerDetailState.Error(exception), state)
+        Assert.assertEquals(UiState.Error(Exception()), state)
     }
 
     @Test
@@ -107,6 +108,6 @@ class PlayerDetailViewModelTest {
 
         // Then
         val state = viewModel.playerDetailState.value
-        Assert.assertEquals(PlayerDetailState.Loading, state)
+        Assert.assertEquals(UiState.Loading, state)
     }
 }
