@@ -4,6 +4,7 @@ import cz.vostinak.data.api.to.PlayerTO
 import cz.vostinak.data.api.to.TeamTO
 import cz.vostinak.data.repository.PlayerDetailRepository
 import cz.vostinak.domain.mapper.toDomain
+import cz.vostinak.room.repository.PlayerDbRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -17,6 +18,7 @@ class GetPlayerUseCaseTest {
 
     private lateinit var getPlayerUseCase: GetPlayerUseCase
     private lateinit var playerRepository: PlayerDetailRepository
+    private lateinit var playerDbRepository: PlayerDbRepository
 
     private val testPlayer = PlayerTO(
         id = 1,
@@ -45,7 +47,8 @@ class GetPlayerUseCaseTest {
     @Before
     fun setup() {
         playerRepository = Mockito.mock(PlayerDetailRepository::class.java)
-        getPlayerUseCase = GetPlayerUseCase(playerRepository)
+        playerDbRepository = Mockito.mock(PlayerDbRepository::class.java)
+        getPlayerUseCase = GetPlayerUseCase(playerRepository, playerDbRepository)
     }
 
     @Test
