@@ -54,6 +54,10 @@ The application is divided into the following modules:
 
 ## Future Improvements
 
+*   **Offline First:** Implementing a more robust offline mode with local caching and synchronization. https://developer.android.com/topic/architecture/data-layer/offline-first 
+*   **Gradle Plugins:** Adding Gradle plugins for code quality, performance, and dependency management. https://developer.android.com/build/extend-agp
+*   **Pager:** Implementing a more robust paging solution with network and database caching. https://developer.android.com/develop/ui/compose/layouts/pager
+*   **Feature Modules:** Splitting the application into feature modules for better modularity and separation of concerns. https://developer.android.com/topic/modularization
 *   **More Tests:** Expanding tests to cover more scenarios and coverage.
 *   **Instrumented tests:** Adding instrumented tests for testing the UI.
 
