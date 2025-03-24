@@ -3,7 +3,8 @@ package cz.vostinak.domain.usecases
 import cz.vostinak.data.api.to.PlayerTO
 import cz.vostinak.data.api.to.TeamTO
 import cz.vostinak.data.repository.PlayerDetailRepository
-import cz.vostinak.domain.mapper.toDomain
+import cz.vostinak.domain.core.mapper.toDomain
+import cz.vostinak.domain.core.usecases.GetPlayerUseCase
 import cz.vostinak.room.repository.PlayerDbRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest

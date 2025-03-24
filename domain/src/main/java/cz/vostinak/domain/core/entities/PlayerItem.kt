@@ -1,4 +1,4 @@
-package cz.vostinak.domain.entities
+package cz.vostinak.domain.core.entities
 
 /**
  * Player item.

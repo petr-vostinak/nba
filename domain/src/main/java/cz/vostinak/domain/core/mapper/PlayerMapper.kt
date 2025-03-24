@@ -1,8 +1,8 @@
-package cz.vostinak.domain.mapper
+package cz.vostinak.domain.core.mapper
 
 import cz.vostinak.data.api.to.PlayerTO
-import cz.vostinak.domain.entities.Player
-import cz.vostinak.domain.entities.Team
+import cz.vostinak.domain.core.entities.Player
+import cz.vostinak.domain.core.entities.Team
 import cz.vostinak.room.player.PlayerEntity
 
 /**

@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data-realm"))
     implementation(project(":data-room"))
     implementation(project(":data-api"))
     implementation(project(":core-ui"))
@@ -46,6 +47,9 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt)
+
+    // Realm
+    implementation(libs.library.base)
 
     // Testing
     testImplementation(libs.junit)

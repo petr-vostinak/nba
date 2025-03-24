@@ -1,8 +1,8 @@
-package cz.vostinak.domain.usecases
+package cz.vostinak.domain.core.usecases
 
 import cz.vostinak.data.repository.PlayersListRepository
-import cz.vostinak.domain.entities.PlayerItem
-import cz.vostinak.domain.mapper.toItemDomain
+import cz.vostinak.domain.core.entities.PlayerItem
+import cz.vostinak.domain.core.mapper.toItemDomain
 import javax.inject.Inject
 
 /**

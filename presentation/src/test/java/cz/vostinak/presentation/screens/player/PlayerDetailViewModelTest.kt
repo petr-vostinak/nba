@@ -1,9 +1,12 @@
 package cz.vostinak.presentation.screens.player
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import cz.vostinak.domain.entities.Player
-import cz.vostinak.domain.entities.Team
-import cz.vostinak.domain.usecases.GetPlayerUseCase
+import cz.vostinak.domain.core.entities.Player
+import cz.vostinak.domain.core.entities.Team
+import cz.vostinak.domain.favorite.usecase.AddFavoritePlayerUseCase
+import cz.vostinak.domain.favorite.usecase.IsFavoritePlayerUseCase
+import cz.vostinak.domain.favorite.usecase.RemoveFavoritePlayerUseCase
+import cz.vostinak.domain.core.usecases.GetPlayerUseCase
 import cz.vostinak.presentation.mapper.toState
 import cz.vostinak.presentation.screens.player.state.PlayerState
 import cz.vostinak.presentation.state.UiState
@@ -30,6 +33,9 @@ class PlayerDetailViewModelTest {
     private val testDispatcher = StandardTestDispatcher()
 
     private lateinit var getPlayerUseCase: GetPlayerUseCase
+    private lateinit var addFavoritePlayerUseCase: AddFavoritePlayerUseCase
+    private lateinit var removeFavoritePlayerUseCase: RemoveFavoritePlayerUseCase
+    private lateinit var isFavoritePlayerUseCase: IsFavoritePlayerUseCase
     private lateinit var viewModel: PlayerDetailViewModel
 
     private val testPlayer = Player(
@@ -61,7 +67,7 @@ class PlayerDetailViewModelTest {
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         getPlayerUseCase = Mockito.mock(GetPlayerUseCase::class.java)
-        viewModel = PlayerDetailViewModel(getPlayerUseCase)
+        viewModel = PlayerDetailViewModel(getPlayerUseCase, addFavoritePlayerUseCase, removeFavoritePlayerUseCase, isFavoritePlayerUseCase)
     }
 
     @After

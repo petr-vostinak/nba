@@ -1,4 +1,4 @@
-package cz.vostinak.domain.usecases
+package cz.vostinak.domain.core.usecases
 
 import cz.vostinak.core.ui.R
 import javax.inject.Inject

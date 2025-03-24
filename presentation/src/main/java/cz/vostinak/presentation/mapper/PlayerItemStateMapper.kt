@@ -1,6 +1,6 @@
 package cz.vostinak.presentation.mapper
 
-import cz.vostinak.domain.entities.PlayerItem
+import cz.vostinak.domain.core.entities.PlayerItem
 import cz.vostinak.presentation.screens.list.state.PlayerItemState
 
 /**

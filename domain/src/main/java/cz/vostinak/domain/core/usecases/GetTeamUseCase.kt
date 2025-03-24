@@ -1,8 +1,8 @@
-package cz.vostinak.domain.usecases
+package cz.vostinak.domain.core.usecases
 
 import cz.vostinak.data.repository.TeamDetailRepository
-import cz.vostinak.domain.entities.Team
-import cz.vostinak.domain.mapper.toDomain
+import cz.vostinak.domain.core.entities.Team
+import cz.vostinak.domain.core.mapper.toDomain
 import javax.inject.Inject
 
 /**

@@ -1,6 +1,7 @@
 package cz.vostinak.domain.usecases
 
 import cz.vostinak.core.ui.R
+import cz.vostinak.domain.core.usecases.GetTeamLogoUseCase
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

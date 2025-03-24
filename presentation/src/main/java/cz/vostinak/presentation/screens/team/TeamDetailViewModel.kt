@@ -2,7 +2,7 @@ package cz.vostinak.presentation.screens.team
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cz.vostinak.domain.usecases.GetTeamUseCase
+import cz.vostinak.domain.core.usecases.GetTeamUseCase
 import cz.vostinak.presentation.mapper.toState
 import cz.vostinak.presentation.screens.team.state.TeamState
 import cz.vostinak.presentation.state.UiState

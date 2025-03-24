@@ -1,7 +1,7 @@
-package cz.vostinak.domain.mapper
+package cz.vostinak.domain.core.mapper
 
 import cz.vostinak.data.api.to.TeamTO
-import cz.vostinak.domain.entities.Team
+import cz.vostinak.domain.core.entities.Team
 
 /**
  * Convert TeamTO to Team.

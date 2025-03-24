@@ -1,6 +1,6 @@
 package cz.vostinak.presentation.mapper
 
-import cz.vostinak.domain.entities.Team
+import cz.vostinak.domain.core.entities.Team
 import cz.vostinak.presentation.screens.team.state.TeamState
 
 /**

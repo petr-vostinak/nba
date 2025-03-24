@@ -2,8 +2,8 @@ package cz.vostinak.presentation.screens.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cz.vostinak.domain.usecases.DeleteOldDataUseCase
-import cz.vostinak.domain.usecases.GetPlayersListUseCase
+import cz.vostinak.domain.core.usecases.DeleteOldDataUseCase
+import cz.vostinak.domain.core.usecases.GetPlayersListUseCase
 import cz.vostinak.presentation.mapper.toState
 import cz.vostinak.presentation.screens.list.state.PlayerItemState
 import cz.vostinak.presentation.state.UiState
