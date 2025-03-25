@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {
@@ -47,6 +49,7 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 
     // Realm
     implementation(libs.library.base)

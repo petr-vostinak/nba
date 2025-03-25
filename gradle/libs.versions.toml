@@ -3,7 +3,7 @@ agp = "8.7.3"
 coilCompose = "2.6.0"
 coreSplashscreen = "1.0.0-beta02"
 coreTesting = "2.1.0"
-kotlin = "2.0.0"
+kotlin = "2.0.10"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -31,6 +31,7 @@ firebase-plugin = "3.0.2"
 gservices-plugin = "4.4.2"
 ksp-plugin = "2.0.10-1.0.24"
 realm-plugin = "2.0.0"
+dependency_analysis_plugin = "2.13.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -78,6 +79,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependency_analysis_plugin" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-plugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-plugin" }
 google-services = { id = "com.google.gms.google-services", version.ref = "gservices-plugin" }

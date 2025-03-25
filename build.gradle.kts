@@ -9,4 +9,5 @@ plugins {
     alias(libs.plugins.devtools.ksp) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.realm.plugin) apply false
+    alias(libs.plugins.dependency.analysis) apply false
 }
