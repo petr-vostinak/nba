@@ -1,6 +1,8 @@
 # NBA App - Showcase of Clean Architecture and Modern Android Skills
 
-This application is a demonstration of my skills in developing modern Android applications, with an emphasis on clean architecture, testing, and the use of the latest technologies. The application displays information about players and teams from the NBA league.
+This application is a demonstration of my skills in developing modern Android applications, with an emphasis on clean architecture, testing, and the use of the latest technologies. The application displays information about players and teams from the NBA league. 
+
+It is also sandbox where I can try new things and experiment with new technologies.
 
 ## Key Features
 
@@ -16,11 +18,13 @@ This application is a demonstration of my skills in developing modern Android ap
 *   **Hilt:** Dependency injection framework to simplify dependency management.
 *   **Coroutines:** For asynchronous operations and thread management.
 *   **Flow:** For reactive programming and working with data streams.
-*   **Room:** For local database storage.
+*   **Room:** For local database storage. Cashing player details for 24 hours.
+*   **Realm** For local database storage. Favorite players.
 *   **Retrofit:** For network communication with the API.
 *   **OkHttp:** For efficient HTTP requests.
 *   **Coil:** For image loading and caching.
 *   **Splash screen API:** For splash screen.
+*   **Dependency analysis gradle plugin** Detects unused and misused dependencies
 *   **Mockito:** For unit testing.
 *   **JUnit:** Testing framework.
 
@@ -40,6 +44,7 @@ The application is divided into the following modules:
 *   **`domain`:** The module with business logic (Use Cases, Entities).
 *   **`data-api`:** The module for API data handling (Repositories, Data Sources).
 *   **`data-room`:** The module for Room database data handling (Repositories, Data Sources).
+*   **`data-realm`:** The module for Realm database data handling (Repositories, Data Sources).
 *   **`core-ui`:** The module for shared UI theme.
 
 ![Architecture Diagram](Android%20Showcase%20Diagram.drawio.png)
