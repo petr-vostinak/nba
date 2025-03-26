@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">NBA</string>
+
+    <!-- player detail screen -->
+    <string name="section_player_basic">Basic info</string>
+    <string name="section_player_team">Team</string>
+    <string name="section_player_draft">Draft</string>
+    <string name="label_player_height">Height</string>
+    <string name="label_player_weight">Weight</string>
+    <string name="label_player_team">Team name</string>
+    <string name="label_player_conference">Conference</string>
+    <string name="label_player_division">Division</string>
+    <string name="label_player_city">City</string>
+    <string name="label_player_draft_year">Year</string>
+    <string name="label_player_draft_round">Round</string>
+    <string name="label_player_draft_number">Number</string>
+
+    <!-- team detail screen -->
+    <string name="section_team_basic">Basic info</string>
+    <string name="section_team_whereabouts">Whereabouts</string>
+    <string name="label_team_city">City</string>
+    <string name="label_team_name">Name</string>
+    <string name="label_team_abbreviation">Abbreviation</string>
+    <string name="label_team_division">Division</string>
+    <string name="label_team_conference">Conference</string>
+
+    <!-- images content descriptions -->
+    <string name="content_description_back">Back</string>
+    <string name="content_description_player_image">Player image</string>
+    <string name="content_description_more_info">More info</string>
+    <string name="content_description_team_logo">%s  logo</string>
+
+    <!-- error card -->
+    <string name="error_card_image_desc">Error image</string>
+    <string name="error_card_title">Error</string>
+    <string name="error_card_subtitle">An error occurred. Please check your internet connection and try again.</string>
+    <string name="error_card_retry">Retry</string>
+</resources>

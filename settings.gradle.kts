@@ -21,4 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "NBA"
 include(":app")
- 
+include(":core-ui")
+include(":presentation")
+include(":data-api")
+include(":domain")
+include(":data-room")
+include(":data-realm")

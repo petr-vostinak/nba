@@ -1,13 +1,12 @@
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     id("com.google.firebase.crashlytics")
     id("com.google.gms.google-services")
+    alias(libs.plugins.dependency.analysis)
 }
 
 android {
@@ -17,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "cz.vostinak.nba"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -26,40 +25,13 @@ android {
 
     buildFeatures { buildConfig = true }
 
-    //load the values from .properties file
-    val keystoreFile = project.rootProject.file("local.properties")
-    val properties = Properties()
-    properties.load(keystoreFile.inputStream())
-    //return empty key in case something goes wrong
-    val apiKey = properties.getProperty("API_KEY") ?: ""
-
     buildTypes {
         debug {
             isMinifyEnabled = false
-            buildConfigField(
-                type = "String",
-                name = "API_KEY",
-                value = "\"$apiKey\""
-            )
-            buildConfigField(
-                type = "String",
-                name = "BUILD_TYPE",
-                value = "\"Debug\""
-            )
         }
 
         release {
             isMinifyEnabled = true
-            buildConfigField(
-                type = "String",
-                name = "API_KEY",
-                value = "\"$apiKey\""
-            )
-            buildConfigField(
-                type = "String",
-                name = "BUILD_TYPE",
-                value = "\"Release\""
-            )
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -79,6 +51,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":core-ui"))
+    implementation(project(":presentation"))
+
+    // Core Android dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -97,25 +73,20 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-
-    // OkHttp
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging.interceptor)
+    ksp(libs.hilt.compiler)
 
     // navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
-    // Glide
-    implementation(libs.glide)
-
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+
+    // Google Tag Manager
+    implementation(libs.play.services.tagmanager)
+
+    // Splash screen API
+    implementation(libs.androidx.core.splashscreen)
 }
