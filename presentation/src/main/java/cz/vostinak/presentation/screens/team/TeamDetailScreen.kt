@@ -1,6 +1,7 @@
 package cz.vostinak.presentation.screens.team
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -18,8 +19,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cz.vostinak.core.ui.preview.Theme
@@ -27,6 +30,7 @@ import cz.vostinak.core.ui.preview.ThemePreviewProvider
 import cz.vostinak.core.ui.theme.NBATheme
 import cz.vostinak.presentation.components.errorcard.ErrorCard
 import cz.vostinak.presentation.R
+import cz.vostinak.presentation.mapper.StateDataOrigin
 import cz.vostinak.presentation.screens.team.composables.TeamDetailContent
 import cz.vostinak.presentation.screens.team.composables.TeamDetailShimmer
 import cz.vostinak.presentation.screens.team.state.TeamState
@@ -102,6 +106,18 @@ internal fun TeamDetailScreen(
                     }
                 }
             )
+        },
+        bottomBar = {
+            (state as? UiState.Success)?.data?.origin?.let { origin ->
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    text = "Data origin: ${origin.name}",
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     ) { innerPadding ->
         Box(
@@ -142,7 +158,8 @@ private fun ShowTeamDetailScreen(@PreviewParameter(ThemePreviewProvider ::class)
                     abbreviation = "ATL",
                     conference = "East",
                     division = "Southeast",
-                    logoResourceIdRes = cz.vostinak.core.ui.R.drawable.atl
+                    logoResourceIdRes = cz.vostinak.core.ui.R.drawable.atl,
+                    origin = StateDataOrigin.API
                 )
             )
         )

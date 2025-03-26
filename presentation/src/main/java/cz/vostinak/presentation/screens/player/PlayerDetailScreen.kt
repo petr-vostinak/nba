@@ -158,7 +158,6 @@ internal fun PlayerDetailScreen(
                     textAlign = TextAlign.Center
                 )
             }
-
         }
     ) { innerPadding ->
         Box(
@@ -229,7 +228,8 @@ private fun ShowPlayerDetailScreen(@PreviewParameter(ThemePreviewProvider ::clas
                             name = "Warriors",
                             conference = "West",
                             division = "Pacific",
-                            logoResourceIdRes = cz.vostinak.core.ui.R.drawable.gsw
+                            logoResourceIdRes = cz.vostinak.core.ui.R.drawable.gsw,
+                            origin = StateDataOrigin.API
                         ),
                         origin = StateDataOrigin.API
                     ),
@@ -270,7 +270,8 @@ private fun ShowPlayerDetailScreenFavorite(@PreviewParameter(ThemePreviewProvide
                             name = "Warriors",
                             conference = "West",
                             division = "Pacific",
-                            logoResourceIdRes = cz.vostinak.core.ui.R.drawable.gsw
+                            logoResourceIdRes = cz.vostinak.core.ui.R.drawable.gsw,
+                            origin = StateDataOrigin.DB_CURRENT
                         ),
                         origin = StateDataOrigin.DB_CURRENT
                     ),

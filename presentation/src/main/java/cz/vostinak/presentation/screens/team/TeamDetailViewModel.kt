@@ -33,8 +33,9 @@ class TeamDetailViewModel @Inject constructor(
             _teamDetailState.value = UiState.Loading
 
             try {
-                val data = getTeamUseCase(teamId)
-                _teamDetailState.value = UiState.Success(data.toState())
+                getTeamUseCase(teamId).collect { data ->
+                    _teamDetailState.value = UiState.Success(data.toState())
+                }
             } catch (e: Exception) {
                 _teamDetailState.value = UiState.Error(e)
             }

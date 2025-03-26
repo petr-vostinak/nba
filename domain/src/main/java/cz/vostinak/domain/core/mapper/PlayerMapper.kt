@@ -23,7 +23,8 @@ fun PlayerTO.toDomain() = Player(
         division = this.team?.division ?: "---",
         fullName = this.team?.fullName ?: "---",
         name = this.team?.name ?: "---",
-        logoResourceIdRes = null
+        logoResourceIdRes = null,
+        origin = null
     ),
     height = this.height ?: "---",
     weight = this.weight ?: "---",
@@ -54,7 +55,8 @@ fun PlayerEntity.toDomain(origin: DataOrigin) = Player(
         division = "---",
         fullName = this.teamName,
         name = "---",
-        logoResourceIdRes = null
+        logoResourceIdRes = null,
+        origin = null
     ),
     height = this.height,
     weight = this.weight,

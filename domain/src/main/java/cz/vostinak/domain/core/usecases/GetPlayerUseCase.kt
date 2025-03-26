@@ -46,6 +46,11 @@ class GetPlayerUseCase @Inject constructor(
         }
     }
 
+    /**
+     * Read player data from API and update database.
+     * @param playerId Player ID.
+     * @return Player.
+     */
     private suspend fun readApiDataAndUpdateDb(playerId: Long): Player {
         val apiPlayer = playerApiRepository.getPlayerDetail(playerId)
         playerDbRepository.insertPlayer(apiPlayer.toEntity())
