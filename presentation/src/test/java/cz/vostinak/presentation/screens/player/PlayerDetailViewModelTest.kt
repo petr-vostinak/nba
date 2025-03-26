@@ -1,6 +1,7 @@
 package cz.vostinak.presentation.screens.player
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import cz.vostinak.domain.core.entities.DataOrigin
 import cz.vostinak.domain.core.entities.Player
 import cz.vostinak.domain.core.entities.Team
 import cz.vostinak.domain.favorite.usecase.AddFavoritePlayerUseCase
@@ -12,6 +13,7 @@ import cz.vostinak.presentation.screens.player.state.PlayerState
 import cz.vostinak.presentation.state.UiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -51,7 +53,8 @@ class PlayerDetailViewModelTest {
             division = "Test Division",
             fullName = "Test Team",
             name = "Test Team",
-            logoResourceIdRes = null
+            logoResourceIdRes = null,
+            origin = DataOrigin.API
         ),
         height = "6-0",
         weight = "180",
@@ -60,7 +63,8 @@ class PlayerDetailViewModelTest {
         draftRound = "1",
         draftNumber = "1",
         country = "Test Country",
-        jerseyNumber = "1"
+        jerseyNumber = "1",
+        origin = DataOrigin.API
     )
 
     @Before
@@ -78,7 +82,7 @@ class PlayerDetailViewModelTest {
     @Test
     fun `getPlayerDetail success`() = runTest {
         // Given
-        whenever(getPlayerUseCase(1)).thenReturn(testPlayer)
+        whenever(getPlayerUseCase(1)).thenReturn(flow<Player> { testPlayer })
 
         // When
         viewModel.getPlayerDetail(1)
@@ -107,7 +111,7 @@ class PlayerDetailViewModelTest {
     @Test
     fun `getPlayerDetail loading`() = runTest {
         // Given
-        whenever(getPlayerUseCase(1)).thenReturn(testPlayer)
+        whenever(getPlayerUseCase(1)).thenReturn(flow { testPlayer })
 
         // When
         viewModel.getPlayerDetail(1)
