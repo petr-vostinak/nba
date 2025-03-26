@@ -1,0 +1,123 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.3">
+  <diagram name="Page-1" id="v0cZbxkGTitF6ZuWHSv6">
+    <mxGraphModel dx="819" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GKyc-UdrTkDvQ-v3nSYe-1" target="GKyc-UdrTkDvQ-v3nSYe-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-1" value="Start" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="320" y="150" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="GKyc-UdrTkDvQ-v3nSYe-2" target="GKyc-UdrTkDvQ-v3nSYe-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-7" value="&lt;b&gt;Success&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-5">
+          <mxGeometry x="-0.08" y="1" relative="1" as="geometry">
+            <mxPoint x="-31" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKyc-UdrTkDvQ-v3nSYe-2" target="GKyc-UdrTkDvQ-v3nSYe-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-8" value="&lt;b&gt;Fail&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-6">
+          <mxGeometry x="-0.1067" relative="1" as="geometry">
+            <mxPoint x="33" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-2" value="Read data from&lt;br&gt;local database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKyc-UdrTkDvQ-v3nSYe-3" target="GKyc-UdrTkDvQ-v3nSYe-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-13" value="&lt;i&gt;Update&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;fromAPI&lt;/span&gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-9">
+          <mxGeometry x="-0.13" y="2" relative="1" as="geometry">
+            <mxPoint x="53" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKyc-UdrTkDvQ-v3nSYe-3" target="GKyc-UdrTkDvQ-v3nSYe-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-14" value="&lt;b&gt;Current&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-11">
+          <mxGeometry x="-0.1657" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-3" value="Check&lt;br&gt;timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="160" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="340" as="sourcePoint" />
+            <mxPoint x="560" y="519" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="GKyc-UdrTkDvQ-v3nSYe-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="400" as="targetPoint" />
+            <mxPoint x="520.0299999999997" y="340.0000000000001" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="520" y="420" />
+              <mxPoint x="380" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-33" value="&lt;b&gt;Fail&lt;/b&gt;&lt;br&gt;&lt;i&gt;show expired data&lt;br&gt;or error message&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-31">
+          <mxGeometry x="-0.0433" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-4" value="Read data from&lt;br&gt;API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="480" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-10" value="Update UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="320" y="490" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-16" value="Update DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="480" y="490" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="GKyc-UdrTkDvQ-v3nSYe-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="311" as="sourcePoint" />
+            <mxPoint x="340" y="490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-24" value="&lt;i&gt;Show old DB data&lt;br&gt;until API update&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-22">
+          <mxGeometry x="0.5055" y="-1" relative="1" as="geometry">
+            <mxPoint y="-51" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-29" value="&lt;b&gt;Expired&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-22">
+          <mxGeometry x="-0.5056" relative="1" as="geometry">
+            <mxPoint x="-36" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="340" as="sourcePoint" />
+            <mxPoint x="420" y="490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="470" />
+              <mxPoint x="420" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-28" value="&lt;i&gt;Show data&lt;br&gt;f&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;rom API&lt;/span&gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-26">
+          <mxGeometry x="0.19" y="4" relative="1" as="geometry">
+            <mxPoint x="-40" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-32" value="&lt;b&gt;Success&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKyc-UdrTkDvQ-v3nSYe-26">
+          <mxGeometry x="-0.6298" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
