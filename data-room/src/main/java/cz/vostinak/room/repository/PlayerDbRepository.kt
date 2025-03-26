@@ -23,9 +23,4 @@ class PlayerDbRepository @Inject constructor(
      * @param player Player entity.
      */
     fun insertPlayer(player: PlayerEntity) = playerDao.insertPlayer(player)
-
-    /**
-     * Delete old data of players older than 24 hours.
-     */
-    fun deleteOldData() = playerDao.deleteOldData()
 }
