@@ -37,7 +37,7 @@ The application is designed with an emphasis on **Clean Architecture** principle
 *   **Maintainability:** The code is easily extensible and modifiable.
 *   **Framework Independence:** The domain layer is independent of the Android framework.
 
-The application is divided into the following modules:
+### Modules
 
 *   **`app`:** The application module that contains navigation and launches the application.
 *   **`presentation`:** The module for data presentation and UI logic (ViewModels, UI states).
@@ -47,7 +47,11 @@ The application is divided into the following modules:
 *   **`data-realm`:** The module for Realm database data handling (Repositories, Data Sources).
 *   **`core-ui`:** The module for shared UI theme.
 
-![Architecture Diagram](Android%20Showcase%20Diagram.drawio.png)
+### General diagram
+
+![Architecture Diagram](architecture_diagram.png)
+
+Inspired by [Google's Guide to App Architecture](https://developer.android.com/topic/architecture).
 
 ## Offline-First Data Flow
 
