@@ -70,7 +70,9 @@ The diagram below illustrates the **offline-first** approach used in the applica
     - If the API call is **successful**, the new data updates both the UI and the database.
     - If the API call **fails**, the system either shows the expired data (if available) or displays an error message.
 
-This approach ensures that users always see **some data**, even if they are offline or the API fails, improving **app resilience and user experience**.
+This approach ensures that users always see **some data**, even if they are offline or the API fails, improving **app resilience and user experience**. 
+
+Inspired by [Google's Guide to App Architecture](https://developer.android.com/topic/architecture/data-layer/offline-first).
 
 ## Why is the Application Built This Way?
 
@@ -82,7 +84,6 @@ This approach ensures that users always see **some data**, even if they are offl
 
 ## Future Improvements
 
-*   **Offline First:** Implementing a more robust offline mode with local caching and synchronization. https://developer.android.com/topic/architecture/data-layer/offline-first 
 *   **Gradle Plugins:** Adding Gradle plugins for code quality, performance, and dependency management. https://developer.android.com/build/extend-agp
 *   **Pager:** Implementing a more robust paging solution with network and database caching. https://developer.android.com/develop/ui/compose/layouts/pager
 *   **Feature Modules:** Splitting the application into feature modules for better modularity and separation of concerns. https://developer.android.com/topic/modularization
