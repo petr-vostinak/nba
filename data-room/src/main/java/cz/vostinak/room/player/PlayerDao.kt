@@ -31,5 +31,5 @@ interface PlayerDao {
      * Delete old data of players older than 24 hours.
      */
     @Query("DELETE FROM players WHERE timestamp < :timestamp")
-    fun deleteOldData(timestamp: Long = System.currentTimeMillis() - 24 * 60 * 60 * 1000)
+    fun deleteOldData(timestamp: Long = System.currentTimeMillis() - 30 * 24 * 60 * 60 * 1000)
 }
