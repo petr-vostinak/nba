@@ -48,7 +48,7 @@
         <mxCell id="GKyc-UdrTkDvQ-v3nSYe-3" value="Check&lt;br&gt;timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
           <mxGeometry x="160" y="280" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+        <mxCell id="GKyc-UdrTkDvQ-v3nSYe-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.665;entryY=-0.057;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="GKyc-UdrTkDvQ-v3nSYe-16">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="560" y="340" as="sourcePoint" />
             <mxPoint x="560" y="519" as="targetPoint" />
