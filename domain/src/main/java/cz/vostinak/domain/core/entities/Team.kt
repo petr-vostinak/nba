@@ -19,5 +19,7 @@ data class Team(
     /** TeamState division */
     val division: String,
     /** TeamState logo resource ID */
-    val logoResourceIdRes: Int?
+    val logoResourceIdRes: Int?,
+    /** TeamState origin */
+    val origin: DataOrigin?
 )

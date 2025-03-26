@@ -1,6 +1,7 @@
 package cz.vostinak.domain.core.mapper
 
 import cz.vostinak.data.api.to.PlayerTO
+import cz.vostinak.domain.core.entities.DataOrigin
 import cz.vostinak.domain.core.entities.Player
 import cz.vostinak.domain.core.entities.Team
 import cz.vostinak.room.player.PlayerEntity
@@ -22,7 +23,8 @@ fun PlayerTO.toDomain() = Player(
         division = this.team?.division ?: "---",
         fullName = this.team?.fullName ?: "---",
         name = this.team?.name ?: "---",
-        logoResourceIdRes = null
+        logoResourceIdRes = null,
+        origin = null
     ),
     height = this.height ?: "---",
     weight = this.weight ?: "---",
@@ -31,14 +33,16 @@ fun PlayerTO.toDomain() = Player(
     draftRound = this.draftRound?.toString() ?: "---",
     draftNumber = this.draftNumber?.toString() ?: "---",
     country = this.country ?: "---",
-    jerseyNumber = this.jerseyNumber ?: "NA"
+    jerseyNumber = this.jerseyNumber ?: "NA",
+    origin = DataOrigin.API
 )
 
 /**
  * Convert PlayerEntity to Player.
+ * @param origin Data origin
  * @return Player.
  */
-fun PlayerEntity.toDomain() = Player(
+fun PlayerEntity.toDomain(origin: DataOrigin) = Player(
     id = this.id,
     firstName = this.firstName,
     lastName = this.lastName,
@@ -51,7 +55,8 @@ fun PlayerEntity.toDomain() = Player(
         division = "---",
         fullName = this.teamName,
         name = "---",
-        logoResourceIdRes = null
+        logoResourceIdRes = null,
+        origin = null
     ),
     height = this.height,
     weight = this.weight,
@@ -60,7 +65,8 @@ fun PlayerEntity.toDomain() = Player(
     draftRound = this.draftRound,
     draftNumber = this.draftNumber,
     country = this.country,
-    jerseyNumber = this.jerseyNumber
+    jerseyNumber = this.jerseyNumber,
+    origin = origin
 )
 
 /**

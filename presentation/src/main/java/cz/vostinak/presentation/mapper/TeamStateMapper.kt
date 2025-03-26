@@ -1,5 +1,6 @@
 package cz.vostinak.presentation.mapper
 
+import cz.vostinak.domain.core.entities.DataOrigin
 import cz.vostinak.domain.core.entities.Team
 import cz.vostinak.presentation.screens.team.state.TeamState
 
@@ -15,5 +16,11 @@ fun Team.toState() = TeamState(
     abbreviation = abbreviation,
     conference = conference,
     division = division,
-    logoResourceIdRes = logoResourceIdRes
+    logoResourceIdRes = logoResourceIdRes,
+    origin = when(this.origin) {
+        DataOrigin.API -> StateDataOrigin.API
+        DataOrigin.DB_CURRENT -> StateDataOrigin.DB_CURRENT
+        DataOrigin.DB_EXPIRED -> StateDataOrigin.DB_EXPIRED
+        else -> null
+    }
 )

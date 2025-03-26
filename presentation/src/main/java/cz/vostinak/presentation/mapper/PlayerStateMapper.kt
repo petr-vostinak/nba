@@ -1,5 +1,6 @@
 package cz.vostinak.presentation.mapper
 
+import cz.vostinak.domain.core.entities.DataOrigin
 import cz.vostinak.domain.core.entities.Player
 import cz.vostinak.domain.favorite.entities.FavoritePlayerItem
 import cz.vostinak.presentation.screens.player.state.PlayerState
@@ -21,7 +22,12 @@ fun Player.toState() = PlayerState(
     draftYear = this.draftYear,
     draftRound = this.draftRound,
     draftNumber = this.draftNumber,
-    jerseyNumber = this.jerseyNumber
+    jerseyNumber = this.jerseyNumber,
+    origin =  when(this.origin) {
+        DataOrigin.API -> StateDataOrigin.API
+        DataOrigin.DB_CURRENT -> StateDataOrigin.DB_CURRENT
+        DataOrigin.DB_EXPIRED -> StateDataOrigin.DB_EXPIRED
+    }
 )
 
 fun PlayerState.toDomainFavoriteItem() = FavoritePlayerItem(

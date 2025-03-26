@@ -1,5 +1,7 @@
 package cz.vostinak.presentation.screens.team.state
 
+import cz.vostinak.presentation.mapper.StateDataOrigin
+
 /**
  * TeamState data class.
  */
@@ -19,5 +21,7 @@ data class TeamState(
     /** TeamState division */
     val division: String,
     /** TeamState logo resource ID */
-    val logoResourceIdRes: Int?
+    val logoResourceIdRes: Int?,
+    /** TeamState origin */
+    val origin: StateDataOrigin?
 )

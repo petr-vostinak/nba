@@ -49,10 +49,11 @@ class PlayerDetailViewModel @Inject constructor(
             _playerDetailState.value = UiState.Loading
 
             try {
-                val data = getPlayerUseCase(playerId)
-                cachedPlayer = data.toState()
-                _playerDetailState.value = UiState.Success(PlayerDetailScreenState(data.toState()))
-                isFavoritePlayer(playerId)
+                getPlayerUseCase(playerId).collect { player ->
+                    cachedPlayer = player.toState()
+                    _playerDetailState.value = UiState.Success(PlayerDetailScreenState(cachedPlayer!!))
+                    isFavoritePlayer(playerId)
+                }
             } catch (e: Exception) {
                 _playerDetailState.value = UiState.Error(e)
             }

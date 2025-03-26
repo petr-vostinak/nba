@@ -49,6 +49,31 @@ The application is divided into the following modules:
 
 ![Architecture Diagram](Android%20Showcase%20Diagram.drawio.png)
 
+## Offline-First Data Flow
+
+The diagram below illustrates the **offline-first** approach used in the application. The system prioritizes loading data from the local database and only fetches data from the API if necessary.
+
+### Data Flow Diagram
+
+![Offline-First Data Flow](offline_first_diagram.png)
+
+### Flow Explanation
+
+1. **Start:** The process begins with an attempt to read data from the local database.
+2. **Local Database Read:**
+    - If successful, the system checks the **timestamp** to determine if the data is still valid.
+    - If the read fails, the system proceeds to fetch data from the API.
+3. **Timestamp Check:**
+    - If the data is **current**, it is displayed in the UI.
+    - If the data is **expired**, an API request is triggered while still showing the old database data until fresh data is available.
+4. **API Fetch:**
+    - If the API call is **successful**, the new data updates both the UI and the database.
+    - If the API call **fails**, the system either shows the expired data (if available) or displays an error message.
+
+This approach ensures that users always see **some data**, even if they are offline or the API fails, improving **app resilience and user experience**. 
+
+Inspired by [Google's Guide to App Architecture](https://developer.android.com/topic/architecture/data-layer/offline-first).
+
 ## Why is the Application Built This Way?
 
 *   **Clean Architecture:** Using Clean Architecture allows for the separation of business logic from the UI and framework. This leads to better testability, maintainability, and extensibility of the code.
@@ -59,7 +84,6 @@ The application is divided into the following modules:
 
 ## Future Improvements
 
-*   **Offline First:** Implementing a more robust offline mode with local caching and synchronization. https://developer.android.com/topic/architecture/data-layer/offline-first 
 *   **Gradle Plugins:** Adding Gradle plugins for code quality, performance, and dependency management. https://developer.android.com/build/extend-agp
 *   **Pager:** Implementing a more robust paging solution with network and database caching. https://developer.android.com/develop/ui/compose/layouts/pager
 *   **Feature Modules:** Splitting the application into feature modules for better modularity and separation of concerns. https://developer.android.com/topic/modularization
