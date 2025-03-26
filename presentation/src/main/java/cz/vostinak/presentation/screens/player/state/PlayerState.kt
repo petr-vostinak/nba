@@ -1,5 +1,6 @@
 package cz.vostinak.presentation.screens.player.state
 
+import cz.vostinak.presentation.mapper.StateDataOrigin
 import cz.vostinak.presentation.screens.team.state.TeamState
 
 /**
@@ -31,5 +32,7 @@ data class PlayerState(
     /** Draft number */
     val draftNumber: String,
     /** Jersey number */
-    val jerseyNumber: String
+    val jerseyNumber: String,
+    /** Data origin */
+    val origin: StateDataOrigin?
 )

@@ -29,5 +29,7 @@ data class Player(
     /** Draft number */
     val draftNumber: String,
     /** Jersey number */
-    val jerseyNumber: String
+    val jerseyNumber: String,
+    /** data origin */
+    val origin: DataOrigin
 )
